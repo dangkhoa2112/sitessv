@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Dịch vụ / Service"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "description": { "type": "richtext" },
+    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "thumbnail": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "featured": { "type": "boolean", "default": false },
+    "sortOrder": { "type": "integer", "default": 0 },
+    "publishDate": { "type": "datetime" },
+    "status": { "type": "enumeration", "enum": ["active", "coming_soon", "archived"], "default": "active" },
+    "category": { "type": "relation", "relation": "manyToOne", "target": "api::service-category.service-category", "inversedBy": "services" },
+    "tags": { "type": "relation", "relation": "manyToMany", "target": "api::tag.tag" },
+    "documents": { "type": "relation", "relation": "manyToMany", "target": "api::downloadable-document.downloadable-document" },
+    "advisorSectionTitle": { "type": "string" },
+    "advisorSectionDescription": { "type": "text" },
+    "advisorSectionBackgroundImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "advisors": { "type": "component", "repeatable": true, "component": "shared.advisor-card" },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo-meta" }
+  }
+}

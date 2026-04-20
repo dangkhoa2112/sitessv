@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_news_list_sections",
+  "info": {
+    "displayName": "Khối danh sách tin tức / News List Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "limit": { "type": "integer", "default": 6 },
+    "featuredOnly": { "type": "boolean", "default": false }
+  }
+}

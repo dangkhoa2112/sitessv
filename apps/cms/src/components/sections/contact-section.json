@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_contact_sections",
+  "info": {
+    "displayName": "Khối liên hệ / Contact Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "phone": { "type": "string" },
+    "email": { "type": "email" },
+    "address": { "type": "text" }
+  }
+}

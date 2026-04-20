@@ -1,0 +1,27 @@
+{
+  "name": "fintech-corporate-platform",
+  "private": true,
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @fintech/web dev",
+    "dev:cms": "pnpm --filter @fintech/cms develop",
+    "seed:cms": "SEED_ON_BOOTSTRAP=true pnpm --filter @fintech/cms develop",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm --filter @fintech/web typecheck",
+    "seo:audit": "pnpm --filter @fintech/web seo:audit",
+    "format": "pnpm -r format"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@strapi/strapi",
+      "@parcel/watcher",
+      "@swc/core",
+      "core-js-pure",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
+}

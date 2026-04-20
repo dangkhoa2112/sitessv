@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "services": "Products & Services",
+    "research": "Research Center",
+    "news": "News",
+    "events": "Events",
+    "faq": "FAQ",
+    "careers": "Careers",
+    "contact": "Contact",
+    "support": "Customer Support",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "search": "Search",
+    "searchPlaceholder": "Enter keyword...",
+    "noData": "No matching content",
+    "updatedAt": "Updated",
+    "publishedAt": "Published",
+    "back": "Back",
+    "download": "Download",
+    "relatedContent": "Related content",
+    "officeNetwork": "Office network",
+    "openAccount": "Open account"
+  },
+  "form": {
+    "fullName": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Submit request",
+    "success": "Your request has been submitted. We will get back to you shortly.",
+    "error": "Unable to submit request. Please try again.",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number"
+  },
+  "seo": {
+    "defaultTitle": "FinTrust Securities",
+    "defaultDescription": "Securities company offering investment, trading, and institutional-grade research services."
+  },
+  "errors": {
+    "notFoundTitle": "Content not found",
+    "notFoundDescription": "The page you are looking for may have been moved or no longer exists.",
+    "serverTitle": "Something went wrong",
+    "serverDescription": "The system is temporarily unavailable. Please try again later."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_feature_items",
+  "info": {
+    "displayName": "Mục tính năng"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "icon": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "link": { "type": "component", "repeatable": false, "component": "shared.link-item" }
+  }
+}

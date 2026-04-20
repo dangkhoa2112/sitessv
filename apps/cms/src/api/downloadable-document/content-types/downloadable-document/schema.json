@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "downloadable_documents",
+  "info": {
+    "singularName": "downloadable-document",
+    "pluralName": "downloadable-documents",
+    "displayName": "Tài liệu tải xuống / Downloadable Document"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "document": { "type": "media", "multiple": false, "allowedTypes": ["files"] },
+    "thumbnail": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "documentCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::document-category.document-category",
+      "inversedBy": "documents"
+    },
+    "publishDate": { "type": "datetime" },
+    "featured": { "type": "boolean", "default": false }
+  }
+}

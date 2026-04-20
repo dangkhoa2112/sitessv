@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_button_configs",
+  "info": {
+    "displayName": "Cấu hình nút"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "href": { "type": "string", "required": true },
+    "variant": { "type": "enumeration", "enum": ["primary", "secondary", "ghost"], "default": "primary" },
+    "target": { "type": "enumeration", "enum": ["_self", "_blank"], "default": "_self" }
+  }
+}

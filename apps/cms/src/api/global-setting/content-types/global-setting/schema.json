@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_settings",
+  "info": {
+    "singularName": "global-setting",
+    "pluralName": "global-settings",
+    "displayName": "Cấu hình chung / Global Setting"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "siteName": { "type": "string", "required": true },
+    "siteTagline": { "type": "string" },
+    "siteDescription": { "type": "text" },
+    "organizationName": { "type": "string" },
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "favicon": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "supportHotline": { "type": "string" },
+    "supportEmail": { "type": "email" },
+    "address": { "type": "text" },
+    "socialLinks": { "type": "component", "repeatable": true, "component": "shared.link-item" },
+    "defaultSeo": { "type": "component", "repeatable": false, "component": "shared.seo-meta" }
+  }
+}

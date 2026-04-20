@@ -1,0 +1,65 @@
+{
+  "collectionName": "components_home_one_shinhan_sections",
+  "info": {
+    "displayName": "Khối One Shinhan trang chủ / Homepage One Shinhan Section",
+    "description": "Băng chuyền hệ sinh thái đối tác trên trang chủ / Partner ecosystem carousel on the homepage"
+  },
+  "options": {},
+  "attributes": {
+    "kicker": {
+      "type": "string"
+    },
+    "profileLabel": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "logoAlt": {
+      "type": "string"
+    },
+    "visitLabel": {
+      "type": "string"
+    },
+    "carouselLabel": {
+      "type": "string"
+    },
+    "ecosystemLabel": {
+      "type": "string"
+    },
+    "officeCountLabel": {
+      "type": "string"
+    },
+    "officeLocationPrimary": {
+      "type": "string"
+    },
+    "officeLocationSecondary": {
+      "type": "string"
+    },
+    "footerTitle": {
+      "type": "string"
+    },
+    "footerDescription": {
+      "type": "text"
+    },
+    "highlights": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.home-highlight-item"
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.home-partner-item"
+    }
+  }
+}

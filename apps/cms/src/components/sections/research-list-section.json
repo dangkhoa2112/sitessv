@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_research_list_sections",
+  "info": {
+    "displayName": "Khối danh sách báo cáo / Research List Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "limit": { "type": "integer", "default": 6 },
+    "featuredOnly": { "type": "boolean", "default": false }
+  }
+}

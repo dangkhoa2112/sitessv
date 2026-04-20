@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_stats_sections",
+  "info": {
+    "displayName": "Khối số liệu / Stats Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "items": { "type": "component", "repeatable": true, "component": "shared.stat-item" }
+  }
+}

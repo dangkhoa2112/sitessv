@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_categories",
+  "info": {
+    "singularName": "service-category",
+    "pluralName": "service-categories",
+    "displayName": "Danh mục dịch vụ / Service Category"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "sortOrder": { "type": "integer", "default": 0 },
+    "services": { "type": "relation", "relation": "oneToMany", "target": "api::service.service", "mappedBy": "category" }
+  }
+}

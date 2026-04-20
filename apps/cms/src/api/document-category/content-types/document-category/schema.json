@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_categories",
+  "info": {
+    "singularName": "document-category",
+    "pluralName": "document-categories",
+    "displayName": "Danh mục tài liệu / Document Category"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "sortOrder": { "type": "integer", "default": 0 },
+    "documents": { "type": "relation", "relation": "oneToMany", "target": "api::downloadable-document.downloadable-document", "mappedBy": "documentCategory" }
+  }
+}

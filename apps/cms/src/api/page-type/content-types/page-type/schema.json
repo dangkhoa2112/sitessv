@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_types",
+  "info": {
+    "singularName": "page-type",
+    "pluralName": "page-types",
+    "displayName": "Loại trang / Page Type"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "sortOrder": { "type": "integer", "default": 0 },
+    "pages": { "type": "relation", "relation": "oneToMany", "target": "api::page.page", "mappedBy": "pageType" }
+  }
+}

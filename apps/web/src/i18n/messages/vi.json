@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Trang chủ",
+    "about": "Về chúng tôi",
+    "services": "Sản phẩm & Dịch vụ",
+    "research": "Trung tâm nghiên cứu",
+    "news": "Tin tức",
+    "events": "Sự kiện",
+    "faq": "FAQ",
+    "careers": "Tuyển dụng",
+    "contact": "Liên hệ",
+    "support": "Hỗ trợ khách hàng",
+    "readMore": "Xem chi tiết",
+    "viewAll": "Xem tất cả",
+    "search": "Tìm kiếm",
+    "searchPlaceholder": "Nhập từ khóa...",
+    "noData": "Không có dữ liệu phù hợp",
+    "updatedAt": "Cập nhật",
+    "publishedAt": "Ngày đăng",
+    "back": "Quay lại",
+    "download": "Tải xuống",
+    "relatedContent": "Nội dung liên quan",
+    "officeNetwork": "Mạng lưới văn phòng",
+    "openAccount": "Mở tài khoản"
+  },
+  "form": {
+    "fullName": "Họ và tên",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "subject": "Tiêu đề",
+    "message": "Nội dung",
+    "submit": "Gửi yêu cầu",
+    "success": "Yêu cầu đã được ghi nhận. Chúng tôi sẽ phản hồi sớm.",
+    "error": "Không thể gửi yêu cầu. Vui lòng thử lại.",
+    "required": "Trường này là bắt buộc",
+    "invalidEmail": "Email không hợp lệ",
+    "invalidPhone": "Số điện thoại không hợp lệ"
+  },
+  "seo": {
+    "defaultTitle": "FinTrust Securities",
+    "defaultDescription": "Công ty chứng khoán cung cấp giải pháp đầu tư, giao dịch và nghiên cứu chuyên sâu."
+  },
+  "errors": {
+    "notFoundTitle": "Không tìm thấy nội dung",
+    "notFoundDescription": "Trang bạn yêu cầu có thể đã được di chuyển hoặc không còn tồn tại.",
+    "serverTitle": "Đã xảy ra lỗi",
+    "serverDescription": "Hệ thống đang tạm thời gián đoạn. Vui lòng thử lại sau."
+  }
+}

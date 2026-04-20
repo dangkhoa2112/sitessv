@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Trang nội dung / Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "summary": {
+      "type": "text"
+    },
+    "pageType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page-type.page-type",
+      "inversedBy": "pages"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero-block",
+        "sections.rich-text-block",
+        "sections.feature-card-section",
+        "sections.stats-section",
+        "sections.timeline-section",
+        "sections.quote-section",
+        "sections.cta-section",
+        "sections.contact-section",
+        "sections.faq-section",
+        "sections.download-list-section",
+        "sections.table-block",
+        "sections.embed-block",
+        "sections.office-list-section",
+        "sections.related-content-section"
+      ]
+    },
+    "breadcrumb": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.breadcrumb-config"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo-meta"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

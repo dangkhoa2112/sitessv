@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_feature_card_sections",
+  "info": {
+    "displayName": "Khối thẻ tính năng / Feature Card Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "items": { "type": "component", "repeatable": true, "component": "shared.feature-item" }
+  }
+}

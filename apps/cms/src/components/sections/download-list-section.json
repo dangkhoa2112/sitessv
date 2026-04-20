@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_download_list_sections",
+  "info": {
+    "displayName": "Khối danh sách tài liệu / Download List Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "documentCategory": { "type": "string" },
+    "limit": { "type": "integer", "default": 6 }
+  }
+}

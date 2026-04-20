@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_home_ai_stack_sections",
+  "info": {
+    "displayName": "Khối AI/dữ liệu trang chủ / Homepage AI Stack Section",
+    "description": "Các thẻ thể hiện giá trị AI và dữ liệu trên trang chủ / Cards showing AI and data value propositions on the homepage"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.home-ai-card"
+    }
+  }
+}

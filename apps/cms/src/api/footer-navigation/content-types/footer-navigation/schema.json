@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer_navigations",
+  "info": {
+    "singularName": "footer-navigation",
+    "pluralName": "footer-navigations",
+    "displayName": "Điều hướng chân trang / Footer Navigation"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "columns": { "type": "component", "repeatable": true, "component": "shared.link-item" },
+    "copyrightText": { "type": "string" },
+    "legalLinks": { "type": "component", "repeatable": true, "component": "shared.link-item" }
+  }
+}

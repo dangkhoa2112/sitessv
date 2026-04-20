@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "research_categories",
+  "info": {
+    "singularName": "research-category",
+    "pluralName": "research-categories",
+    "displayName": "Danh mục báo cáo / Research Category"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "reports": { "type": "relation", "relation": "oneToMany", "target": "api::research-report.research-report", "mappedBy": "category" }
+  }
+}

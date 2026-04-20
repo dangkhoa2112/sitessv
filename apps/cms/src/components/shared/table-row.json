@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_table_rows",
+  "info": {
+    "displayName": "Hàng bảng / Table Row"
+  },
+  "options": {},
+  "attributes": {
+    "col1": { "type": "string", "required": true },
+    "col2": { "type": "string" },
+    "col3": { "type": "string" },
+    "col4": { "type": "string" }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_home_partner_items",
+  "info": {
+    "displayName": "Đối tác One Shinhan / One Shinhan Partner",
+    "description": "Mục đối tác trong khối One Shinhan của trang chủ / Partner item used in the homepage One Shinhan block"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "shortDesc": {
+      "type": "text"
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "alt": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

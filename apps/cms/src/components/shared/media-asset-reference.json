@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_media_asset_references",
+  "info": {
+    "displayName": "Tham chiếu tài nguyên media / Media Asset Reference"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "alt": { "type": "string" },
+    "file": { "type": "media", "multiple": false, "allowedTypes": ["images", "files"] }
+  }
+}

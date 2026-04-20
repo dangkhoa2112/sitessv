@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_rich_text_blocks",
+  "info": {
+    "displayName": "Khối nội dung rich text / Rich Text Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "content": { "type": "richtext", "required": true }
+  }
+}

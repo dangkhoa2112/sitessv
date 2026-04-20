@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_articles",
+  "info": {
+    "singularName": "news-article",
+    "pluralName": "news-articles",
+    "displayName": "Bài tin tức / News Article"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "content": { "type": "richtext", "required": true },
+    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "thumbnail": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "publishDate": { "type": "datetime" },
+    "featured": { "type": "boolean", "default": false },
+    "status": { "type": "enumeration", "enum": ["draft", "published", "archived"], "default": "published" },
+    "category": { "type": "relation", "relation": "manyToOne", "target": "api::news-category.news-category", "inversedBy": "articles" },
+    "author": { "type": "relation", "relation": "manyToOne", "target": "api::author.author" },
+    "tags": { "type": "relation", "relation": "manyToMany", "target": "api::tag.tag" },
+    "documents": { "type": "relation", "relation": "manyToMany", "target": "api::downloadable-document.downloadable-document" },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo-meta" }
+  }
+}

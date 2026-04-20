@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banners",
+  "info": {
+    "singularName": "banner",
+    "pluralName": "banners",
+    "displayName": "Banner trang chủ / Homepage Banner"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "mobileImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "placement": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::banner-placement.banner-placement",
+      "inversedBy": "banners"
+    },
+    "priority": { "type": "integer", "default": 0 },
+    "active": { "type": "boolean", "default": true },
+    "button": { "type": "component", "repeatable": false, "component": "shared.button-config" }
+  }
+}

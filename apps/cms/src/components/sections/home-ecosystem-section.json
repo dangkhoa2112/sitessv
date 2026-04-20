@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_home_ecosystem_sections",
+  "info": {
+    "displayName": "Khối hệ sinh thái trang chủ / Homepage Ecosystem Section",
+    "description": "Khối liên kết hệ sinh thái và CTA trên trang chủ / Ecosystem links and CTA block on the homepage"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "primaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-config"
+    },
+    "secondaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-config"
+    },
+    "marketLabel": {
+      "type": "string"
+    },
+    "quickLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link-item"
+    },
+    "shortcutLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link-item"
+    }
+  }
+}

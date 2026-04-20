@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_timeline_sections",
+  "info": {
+    "displayName": "Khối dòng thời gian / Timeline Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "items": { "type": "component", "repeatable": true, "component": "shared.timeline-item" }
+  }
+}

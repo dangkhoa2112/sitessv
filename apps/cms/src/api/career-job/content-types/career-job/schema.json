@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "career_jobs",
+  "info": {
+    "singularName": "career-job",
+    "pluralName": "career-jobs",
+    "displayName": "Tin tuyển dụng / Career Job"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "description": { "type": "richtext" },
+    "department": { "type": "string" },
+    "location": { "type": "string" },
+    "employmentType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::employment-type.employment-type",
+      "inversedBy": "jobs"
+    },
+    "salaryRange": { "type": "string" },
+    "publishDate": { "type": "datetime" },
+    "applicationDeadline": { "type": "date" },
+    "featured": { "type": "boolean", "default": false },
+    "status": { "type": "enumeration", "enum": ["open", "closed"], "default": "open" },
+    "applyUrl": { "type": "string" },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo-meta" }
+  }
+}

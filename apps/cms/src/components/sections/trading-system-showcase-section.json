@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_trading_system_showcase_sections",
+  "info": {
+    "displayName": "Khối giới thiệu hệ thống giao dịch / Trading System Showcase Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "platformName": { "type": "string" },
+    "features": { "type": "json" },
+    "screenshot": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

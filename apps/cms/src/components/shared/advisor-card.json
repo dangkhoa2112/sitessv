@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_advisor_cards",
+  "info": {
+    "displayName": "Hồ sơ tư vấn viên / Advisor Card",
+    "description": "Hồ sơ chuyên viên tư vấn hiển thị ở trang dịch vụ tư vấn đầu tư / Advisor profile shown on the investment advisory page"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "quote": {
+      "type": "text"
+    },
+    "cert": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "badge": {
+      "type": "string"
+    },
+    "ctaLabel": {
+      "type": "string"
+    },
+    "ctaHref": {
+      "type": "string"
+    }
+  }
+}

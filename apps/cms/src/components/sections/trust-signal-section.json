@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_trust_signal_sections",
+  "info": {
+    "displayName": "Khối tín hiệu niềm tin / Trust Signal Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "items": { "type": "component", "repeatable": true, "component": "shared.trust-item" }
+  }
+}

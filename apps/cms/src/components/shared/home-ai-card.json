@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_home_ai_cards",
+  "info": {
+    "displayName": "Thẻ AI / AI Card",
+    "description": "Thẻ nội dung cho khối AI/dữ liệu trên trang chủ / Content card for the homepage AI/data block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

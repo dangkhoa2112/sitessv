@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_table_blocks",
+  "info": {
+    "displayName": "Khối bảng / Table Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "column1Label": { "type": "string", "default": "Item" },
+    "column2Label": { "type": "string", "default": "Value" },
+    "column3Label": { "type": "string" },
+    "column4Label": { "type": "string" },
+    "rows": { "type": "component", "repeatable": true, "component": "shared.table-row" }
+  }
+}

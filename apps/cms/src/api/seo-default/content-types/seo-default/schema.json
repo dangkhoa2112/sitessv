@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "seo_defaults",
+  "info": {
+    "singularName": "seo-default",
+    "pluralName": "seo-defaults",
+    "displayName": "Mặc định SEO / SEO Default"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "meta": { "type": "component", "repeatable": false, "component": "shared.seo-meta" },
+    "siteUrl": { "type": "string" },
+    "defaultOgImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "organizationSchema": { "type": "json" }
+  }
+}

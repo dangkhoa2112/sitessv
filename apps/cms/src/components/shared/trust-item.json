@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_trust_items",
+  "info": {
+    "displayName": "Mục niềm tin / Trust Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "office_types",
+  "info": {
+    "singularName": "office-type",
+    "pluralName": "office-types",
+    "displayName": "Loại văn phòng / Office Type"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "summary": { "type": "text" },
+    "sortOrder": { "type": "integer", "default": 0 },
+    "offices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::office-location.office-location",
+      "mappedBy": "officeType"
+    }
+  }
+}

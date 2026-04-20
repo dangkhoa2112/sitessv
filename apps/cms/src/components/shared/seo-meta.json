@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_seo_metas",
+  "info": {
+    "displayName": "Siêu dữ liệu SEO / SEO Meta",
+    "description": "Thông tin tối ưu công cụ tìm kiếm / SEO metadata"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": { "type": "string", "minLength": 20, "maxLength": 70 },
+    "metaDescription": { "type": "text", "minLength": 80, "maxLength": 180 },
+    "canonicalUrl": { "type": "string", "regex": "^https?://.+" },
+    "metaRobots": { "type": "string", "default": "index,follow" },
+    "ogTitle": { "type": "string", "maxLength": 70 },
+    "ogDescription": { "type": "text", "maxLength": 180 },
+    "ogImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "twitterCard": { "type": "enumeration", "enum": ["summary", "summary_large_image"], "default": "summary_large_image" },
+    "keywords": { "type": "text", "maxLength": 300 }
+  }
+}

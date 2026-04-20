@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_navigations",
+  "info": {
+    "singularName": "header-navigation",
+    "pluralName": "header-navigations",
+    "displayName": "Điều hướng đầu trang / Header Navigation"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "items": { "type": "component", "repeatable": true, "component": "shared.link-item" },
+    "primaryButton": { "type": "component", "repeatable": false, "component": "shared.button-config" },
+    "secondaryButton": { "type": "component", "repeatable": false, "component": "shared.button-config" }
+  }
+}

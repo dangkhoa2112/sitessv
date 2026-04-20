@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_related_contents",
+  "info": {
+    "displayName": "Khối nội dung liên quan / Related Content Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "contentType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::related-content-type.related-content-type"
+    },
+    "limit": { "type": "integer", "default": 4 }
+  }
+}

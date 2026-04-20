@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_embed_blocks",
+  "info": {
+    "displayName": "Khối nhúng / Embed Block"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "embedUrl": { "type": "string" },
+    "embedCode": { "type": "text" }
+  }
+}

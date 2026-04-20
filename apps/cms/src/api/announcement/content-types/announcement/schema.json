@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "announcements",
+  "info": {
+    "singularName": "announcement",
+    "pluralName": "announcements",
+    "displayName": "Thông báo / Announcement"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "summary": { "type": "text" },
+    "content": { "type": "richtext" },
+    "publishDate": { "type": "datetime" },
+    "priority": { "type": "enumeration", "enum": ["high", "medium", "low"], "default": "medium" },
+    "featured": { "type": "boolean", "default": false },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo-meta" }
+  }
+}

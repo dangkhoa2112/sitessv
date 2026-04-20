@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_office_list_sections",
+  "info": {
+    "displayName": "Khối danh sách văn phòng / Office List Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "showMapPlaceholder": { "type": "boolean", "default": true }
+  }
+}

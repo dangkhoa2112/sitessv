@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_home_highlight_items",
+  "info": {
+    "displayName": "Mục nhấn trang chủ / Homepage Highlight Item",
+    "description": "Thẻ nhấn ngắn trên khối One Shinhan / Short highlight card in the One Shinhan section"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "accentColor": {
+      "type": "string"
+    },
+    "accentBackgroundColor": {
+      "type": "string"
+    },
+    "accentBorderColor": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

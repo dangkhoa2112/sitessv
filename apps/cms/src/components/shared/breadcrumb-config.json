@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_shared_breadcrumb_configs",
+  "info": {
+    "displayName": "Cấu hình breadcrumb / Breadcrumb Config"
+  },
+  "options": {},
+  "attributes": {
+    "show": { "type": "boolean", "default": true },
+    "customLabel": { "type": "string" }
+  }
+}

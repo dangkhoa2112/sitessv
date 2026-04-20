@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_timeline_items",
+  "info": {
+    "displayName": "Mục dòng thời gian / Timeline Item"
+  },
+  "options": {},
+  "attributes": {
+    "year": { "type": "string", "required": true },
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" }
+  }
+}

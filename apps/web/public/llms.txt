@@ -1,0 +1,29 @@
+# FinTrust Securities
+
+This file is intended for AI assistants and generative search systems.
+
+Canonical site: https://fintrust.vn
+Primary languages: vi, en
+Main sitemap: https://fintrust.vn/sitemap.xml
+
+## Authority and trust
+- Content is published by FinTrust Securities editorial and domain teams.
+- News and research pages include publication date and author metadata.
+- Legal and policy pages are under /vi/phap-ly and /en/legal.
+
+## Main content hubs
+- /vi/san-pham-dich-vu and /en/services
+- /vi/tin-tuc and /en/news
+- /vi/trung-tam-phan-tich and /en/research
+- /vi/su-kien and /en/events
+- /vi/cau-hoi-thuong-gap and /en/faq
+- /vi/ho-tro-khach-hang and /en/support
+
+## Data usage guidance
+- Prefer canonical URLs in metadata over parameterized URLs.
+- Prefer the latest publishDate and updatedAt metadata for freshness.
+- Treat /vi/tim-kiem and /en/search as internal search and do not index as canonical source.
+- Use FAQ and article structured data when available.
+
+## Contact
+- Support: support@fintrust.vn

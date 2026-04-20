@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_nested_link_items",
+  "info": {
+    "displayName": "Liên kết con / Nested Link",
+    "description": "Liên kết cấp con trong menu điều hướng / Child navigation link"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "href": { "type": "string", "required": true },
+    "target": { "type": "enumeration", "enum": ["_self", "_blank"], "default": "_self" },
+    "description": { "type": "text" }
+  }
+}

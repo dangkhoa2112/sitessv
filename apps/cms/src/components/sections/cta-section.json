@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_cta_sections",
+  "info": {
+    "displayName": "Khối CTA / CTA Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "primaryButton": { "type": "component", "repeatable": false, "component": "shared.button-config" },
+    "secondaryButton": { "type": "component", "repeatable": false, "component": "shared.button-config" }
+  }
+}

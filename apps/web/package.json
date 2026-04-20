@@ -1,0 +1,40 @@
+{
+  "name": "@fintech/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "seo:audit": "node ./scripts/seo-geo-audit.mjs"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "@hookform/resolvers": "^3.10.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.18.2",
+    "graphql": "^16.11.0",
+    "next": "16.2.3",
+    "next-intl": "^4.4.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.65.0",
+    "sanitize-html": "^2.17.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
