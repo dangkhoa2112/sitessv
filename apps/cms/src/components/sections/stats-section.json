@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 700 },
     "title": { "type": "string" },
     "items": { "type": "component", "repeatable": true, "component": "shared.stat-item" }
   }

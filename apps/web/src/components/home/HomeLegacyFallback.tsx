@@ -64,7 +64,7 @@ export function HomeLegacyFallback({
         nextSlideLabel={heroCarouselNext || content.heroCarouselNext}
       />
 
-      <div className="home-main-canvas home-fin-wrap relative z-10 pb-20 pt-8 md:pt-11">
+      <div className="home-main-canvas home-fin-wrap relative z-10 ">
         {!hideMarketStrip ? <HomeLegacyMarketStrip locale={locale} boardDate={boardDate} /> : null}
         
         {!hideAiStack ? <HomeLegacyAiStackSection locale={locale} /> : null}

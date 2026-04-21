@@ -58,6 +58,7 @@ export const HOME_SECTION_FIELDS = gql`
   fragment HomeSectionFields on HomepageSectionsDynamicZone {
     __typename
     ... on ComponentSectionsHomeOneShinhanSection {
+      id
       kicker
       profileLabel
       title
@@ -97,6 +98,7 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsHomeAiStackSection {
+      id
       eyebrow
       title
       cards {
@@ -106,6 +108,7 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsHomeEcosystemSection {
+      id
       eyebrow
       title
       description
@@ -124,6 +127,7 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsFeatureCardSection {
+      id
       featureTitle: title
       description
       items {
@@ -135,6 +139,7 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsTradingSystemShowcaseSection {
+      id
       tradingTitle: title
       description
       platformName
@@ -144,24 +149,28 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsResearchListSection {
+      id
       researchTitle: title
       description
       limit
       featuredOnly
     }
     ... on ComponentSectionsNewsListSection {
+      id
       newsTitle: title
       description
       limit
       featuredOnly
     }
     ... on ComponentSectionsFaqSection {
+      id
       faqTitle: title
       description
       faqCategorySlug
       limit
     }
     ... on ComponentSectionsCtaSection {
+      id
       ctaTitle: title
       description
       primaryButton {
@@ -172,11 +181,13 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsOfficeListSection {
+      id
       officeTitle: title
       description
       showMapPlaceholder
     }
     ... on ComponentSectionsTrustSignalSection {
+      id
       trustTitle: title
       description
       items {
@@ -188,6 +199,7 @@ export const HOME_SECTION_FIELDS = gql`
       }
     }
     ... on ComponentSectionsStatsSection {
+      id
       statsTitle: title
       items {
         label

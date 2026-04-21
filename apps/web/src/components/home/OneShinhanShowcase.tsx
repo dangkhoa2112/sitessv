@@ -92,7 +92,7 @@ export function OneShinhanShowcase({
 
   return (
     <section className="home-section-gap relative overflow-hidden py-2 text-[var(--color-primary)] md:py-3.5" aria-labelledby={`${id}-heading`}>
-      <div className="shinhan-container relative z-10">
+      <div className="relative z-10">
         <div className="relative overflow-hidden rounded-[2rem] border border-[#d7e3ef] bg-[linear-gradient(145deg,#ffffff_0%,#f7faff_52%,#eef4fb_100%)] shadow-[0_28px_70px_-52px_rgba(0,57,127,0.34)] lg:min-h-[520px]">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-[#dce8f4]/70 blur-3xl" />

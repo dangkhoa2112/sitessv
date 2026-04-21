@@ -40,12 +40,12 @@ export async function getLayout(locale: string) {
 }
 
 export async function getHomepage(locale: string) {
-  const data = await cmsQuery<any>(GET_HOMEPAGE, { locale }, REVALIDATE_TIME);
+  const data = await cmsQuery<any>(GET_HOMEPAGE, { locale }, 0);
   return data?.homepage?.data?.attributes ?? null;
 }
 
 export async function getHomepageBanners(locale: string, placement = 'home_hero') {
-  const data = await cmsQuery<any>(GET_BANNERS, { locale, placement }, REVALIDATE_TIME);
+  const data = await cmsQuery<any>(GET_BANNERS, { locale, placement }, 0);
   const banners = data?.banners?.data ?? [];
   return [...banners].sort((a: any, b: any) => {
     const priorityA = a?.attributes?.priority ?? 0;

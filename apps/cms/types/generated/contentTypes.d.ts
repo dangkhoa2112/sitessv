@@ -1270,10 +1270,12 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     publishedAt: Attribute.DateTime;
     sections: Attribute.DynamicZone<
       [
+        'sections.home-market-strip-section',
         'sections.home-one-shinhan-section',
         'sections.home-ai-stack-section',
         'sections.home-ecosystem-section',
         'sections.feature-card-section',
+        'sections.home-price-board-section',
         'sections.trading-system-showcase-section',
         'sections.research-list-section',
         'sections.news-list-section',

@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 1000 },
     "title": { "type": "string" },
     "description": { "type": "text" },
     "faqCategorySlug": { "type": "string" },

@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 1200 },
     "title": { "type": "string" },
     "description": { "type": "text" },
     "showMapPlaceholder": { "type": "boolean", "default": true }

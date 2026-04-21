@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 1100 },
     "title": { "type": "string", "required": true },
     "description": { "type": "text" },
     "primaryButton": { "type": "component", "repeatable": false, "component": "shared.button-config" },

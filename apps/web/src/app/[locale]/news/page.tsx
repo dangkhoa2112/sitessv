@@ -54,7 +54,11 @@ export default async function NewsPage({
   return (
     <>
       {cmsPage?.sections?.length ? (
-        <SectionRenderer sections={cmsPage.sections} />
+        <div className="subpage-shell subpage-shell--compact">
+          <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
+            <SectionRenderer sections={cmsPage.sections} />
+          </div>
+        </div>
       ) : (
         <PageHero
           title={locale === 'vi' ? 'Tin tức' : 'News'}

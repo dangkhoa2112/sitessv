@@ -6,6 +6,10 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": {
+      "type": "integer",
+      "default": 200
+    },
     "eyebrow": {
       "type": "string"
     },

@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 800 },
     "title": { "type": "string" },
     "description": { "type": "text" },
     "limit": { "type": "integer", "default": 6 },

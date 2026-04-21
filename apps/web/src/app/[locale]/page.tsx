@@ -122,9 +122,11 @@ export default async function HomePage({
       <HomeLegacyFallback
         locale={currentLocale}
         heroSlides={heroSlides}
+        hideMarketStrip
         hideEcosystem
         hideAiStack
         hideOpenAccount
+        hidePriceBoard
         hideTrading
         hideServices
       />

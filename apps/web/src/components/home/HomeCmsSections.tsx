@@ -6,6 +6,8 @@ import { CtaSection } from '@/components/ui/cta';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
 import { InsightRail } from '@/components/ui/InsightRail';
 import { Card, CardBody, CardDescription } from '@/components/ui/card';
+import { HomeLegacyMarketStrip } from '@/components/home/HomeLegacyMarketStrip';
+import { HomeLegacyPriceBoardSection } from '@/components/home/HomeLegacyPriceBoardSection';
 import { OneShinhanShowcase } from '@/components/home/OneShinhanShowcase';
 import { buildLocalePath, switchLocalePath } from '@/lib/localized-routes';
 import { assetUrl } from '@/lib/urls';
@@ -131,6 +133,18 @@ function SparkIcon() {
   );
 }
 
+function getBoardDate(locale: 'vi' | 'en') {
+  return new Intl.DateTimeFormat(locale === 'vi' ? 'vi-VN' : 'en-US', {
+    weekday: 'long',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+  }).format(new Date());
+}
+
 export function HomeCmsSections({
   locale,
   sections,
@@ -144,11 +158,18 @@ export function HomeCmsSections({
   const normalizedNews = newsItems.map((item) => unwrap(item)).filter(Boolean) as Array<any>;
   const normalizedResearch = researchItems.map((item) => unwrap(item)).filter(Boolean) as Array<any>;
   const normalizedOffices = offices.map((item) => unwrap(item)).filter(Boolean) as Array<any>;
+  const boardDate = getBoardDate(locale);
 
   return (
     <div className="space-y-7">
       {sections.map((section, index) => {
         switch (section.__typename) {
+          case 'ComponentSectionsHomeMarketStripSection':
+            return <HomeLegacyMarketStrip key={`${section.__typename}-${index}`} locale={locale} boardDate={boardDate} />;
+
+          case 'ComponentSectionsHomePriceBoardSection':
+            return <HomeLegacyPriceBoardSection key={`${section.__typename}-${index}`} locale={locale} boardDate={boardDate} />;
+
           case 'ComponentSectionsHomeOneShinhanSection': {
             const highlights = (section.highlights || [])
               .filter(Boolean)
@@ -544,75 +565,102 @@ export function HomeCmsSections({
                 </div>
               </section>
             );
- case 'ComponentSectionsHomeEcosystemSection': {
+          case 'ComponentSectionsHomeEcosystemSection': {
             const quickLinks = (section.quickLinks || []).filter((item: any) => item?.href && item?.label);
             const shortcutLinks = (section.shortcutLinks || []).filter((item: any) => item?.href && item?.label);
+            const supportTags =
+              locale === 'vi'
+                ? ['Dữ liệu thời gian thực', 'Nền tảng giao dịch số', 'Hỗ trợ chuyên gia']
+                : ['Realtime data', 'Digital trading platform', 'Expert advisory'];
 
             return (
               <section key={`${section.__typename}-${index}`} className="shinhan-container home-section-gap">
-                <CtaSection
-                  eyebrow={section.eyebrow || (locale === 'vi' ? 'Hệ sinh thái đầu tư' : 'Investment ecosystem')}
-                  title={section.title}
-                  description={section.description}
-                  className="home-vt-ecosystem"
-                  actions={
-                    <>
-                      {section.primaryButton?.href ? (
-                        <Button
-                          as="a"
-                          href={resolveLink(locale, section.primaryButton.href)!}
-                          target={section.primaryButton.target || undefined}
-                          rel={section.primaryButton.target === '_blank' ? 'noreferrer' : undefined}
-                        >
-                          {section.primaryButton.label || (locale === 'vi' ? 'Khám phá nền tảng' : 'Explore platform')}
-                        </Button>
-                      ) : null}
-                      {section.secondaryButton?.href ? (
-                        <Button
-                          as="a"
-                          href={resolveLink(locale, section.secondaryButton.href)!}
-                          target={section.secondaryButton.target || undefined}
-                          rel={section.secondaryButton.target === '_blank' ? 'noreferrer' : undefined}
-                          variant="secondary"
-                        >
-                          {section.secondaryButton.label || (locale === 'vi' ? 'Tìm hiểu thêm' : 'Learn more')}
-                        </Button>
-                      ) : null}
-                    </>
-                  }
-                >
-                  <div className="grid gap-2.5">
-                    {section.marketLabel ? (
-                      <span className="inline-flex w-fit rounded-full border border-[#cf9c51]/40 bg-[#fbf3e7] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)]">
-                        {section.marketLabel}
-                      </span>
-                    ) : null}
-                    {quickLinks.map((item: any) => (
-                      <Link
-                        key={item.label}
-                        href={resolveLink(locale, item.href)!}
-                        className="home-link-card group rounded-xl border border-[#d6e3f1] bg-white/90 px-4 py-3 text-[15px] font-semibold text-[var(--color-primary)] hover:border-[#cf9c51]/72 hover:bg-white"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                    {shortcutLinks.length ? (
-                      <div className="mt-1 grid grid-cols-2 gap-2.5">
-                        {shortcutLinks.map((item: any) => (
-                          <a
-                            key={item.label}
-                            href={resolveLink(locale, item.href)!}
-                            target={item.target === '_blank' || item.href?.startsWith('http') ? '_blank' : undefined}
-                            rel={item.target === '_blank' || item.href?.startsWith('http') ? 'noreferrer' : undefined}
-                            className="home-link-card rounded-xl border border-[#dec8a3] bg-[#fff9ef] px-3 py-2.5 text-center text-[14px] font-semibold text-[var(--color-primary)] hover:border-[#cf9c51] hover:bg-white"
+                <Card tone="tinted" className="home-vt-ecosystem overflow-hidden rounded-3xl px-5 py-5 md:px-6 md:py-6">
+                  <div className="grid gap-5 lg:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] lg:items-start">
+                    <div className="max-w-none">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#7a5a2f]">
+                        {section.eyebrow || (locale === 'vi' ? 'Hệ sinh thái đầu tư' : 'Investment ecosystem')}
+                      </p>
+                      <h2 className="mt-2 text-[1.7rem] font-semibold leading-[1.1] tracking-tight text-[var(--color-primary)] md:text-[2.3rem]">
+                        {section.title}
+                      </h2>
+                      {section.description ? <p className="mt-2.5 max-w-[40rem] text-[15px] leading-7 text-[#3f576d]">{section.description}</p> : null}
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {supportTags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-flex items-center rounded-full border border-[#d6e3f1] bg-white/86 px-3 py-1 text-[11px] font-medium text-[#5b7288]"
                           >
-                            {item.label}
-                          </a>
+                            {tag}
+                          </span>
                         ))}
                       </div>
-                    ) : null}
+
+                      <div className="mt-4 flex flex-wrap gap-2.5">
+                        {section.primaryButton?.href ? (
+                          <Button
+                            as="a"
+                            href={resolveLink(locale, section.primaryButton.href)!}
+                            target={section.primaryButton.target || undefined}
+                            rel={section.primaryButton.target === '_blank' ? 'noreferrer' : undefined}
+                            className="h-11 rounded-full px-5"
+                          >
+                            {section.primaryButton.label || (locale === 'vi' ? 'Khám phá nền tảng' : 'Explore platform')}
+                          </Button>
+                        ) : null}
+                        {section.secondaryButton?.href ? (
+                          <Button
+                            as="a"
+                            href={resolveLink(locale, section.secondaryButton.href)!}
+                            target={section.secondaryButton.target || undefined}
+                            rel={section.secondaryButton.target === '_blank' ? 'noreferrer' : undefined}
+                            variant="secondary"
+                            className="h-11 rounded-full px-5"
+                          >
+                            {section.secondaryButton.label || (locale === 'vi' ? 'Tìm hiểu thêm' : 'Learn more')}
+                          </Button>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border border-[#d8e4f0] bg-white/92 p-3.5 md:p-4">
+                      {section.marketLabel ? (
+                        <span className="inline-flex w-fit rounded-full border border-[#cf9c51]/40 bg-[#fbf3e7] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)]">
+                          {section.marketLabel}
+                        </span>
+                      ) : null}
+
+                      <div className="mt-3 grid gap-2">
+                        {quickLinks.map((item: any) => (
+                          <Link
+                            key={item.label}
+                            href={resolveLink(locale, item.href)!}
+                            className="home-link-card group rounded-xl border border-[#d6e3f1] bg-white px-4 py-2.5 text-[14px] font-semibold text-[var(--color-primary)] hover:border-[#cf9c51]/72"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+
+                      {shortcutLinks.length ? (
+                        <div className="mt-3 grid grid-cols-2 gap-2">
+                          {shortcutLinks.map((item: any) => (
+                            <a
+                              key={item.label}
+                              href={resolveLink(locale, item.href)!}
+                              target={item.target === '_blank' || item.href?.startsWith('http') ? '_blank' : undefined}
+                              rel={item.target === '_blank' || item.href?.startsWith('http') ? 'noreferrer' : undefined}
+                              className="home-link-card rounded-xl border border-[#dec8a3] bg-[#fff9ef] px-3 py-2 text-center text-[14px] font-semibold text-[var(--color-primary)] hover:border-[#cf9c51] hover:bg-white"
+                            >
+                              {item.label}
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
-                </CtaSection>
+                </Card>
               </section>
             );
           }

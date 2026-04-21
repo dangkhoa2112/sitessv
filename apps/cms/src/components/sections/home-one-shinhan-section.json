@@ -6,6 +6,10 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": {
+      "type": "integer",
+      "default": 100
+    },
     "kicker": {
       "type": "string"
     },

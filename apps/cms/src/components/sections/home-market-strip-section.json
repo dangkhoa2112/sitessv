@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_home_market_strip_sections",
+  "info": {
+    "displayName": "Khối thị trường trang chủ / Homepage Market Strip",
+    "description": "Dải thị trường realtime trên trang chủ / Realtime market strip on the homepage"
+  },
+  "options": {},
+  "attributes": {
+    "positionIndex": {
+      "type": "integer",
+      "default": 50
+    }
+  }
+}

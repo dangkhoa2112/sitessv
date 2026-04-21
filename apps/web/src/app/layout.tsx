@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning className={`${shinhan.variable} ${oneShinhan.variable}`}>
-      <body suppressHydrationWarning className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+      <body suppressHydrationWarning className="min-h-screen text-[var(--color-text)] antialiased">
         <SkipLink />
         {children}
       </body>

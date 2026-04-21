@@ -572,7 +572,12 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
     },
     sections: [
       {
+        __component: 'sections.home-market-strip-section',
+        positionIndex: 50
+      },
+      {
         __component: 'sections.home-one-shinhan-section',
+        positionIndex: 100,
         kicker: locale === 'vi' ? 'Hệ sinh thái One Shinhan' : 'One Shinhan ecosystem',
         profileLabel: locale === 'vi' ? 'Hồ sơ đối tác' : 'Partner profile',
         title: locale === 'vi' ? 'Kết nối với hệ sinh thái tài chính Shinhan' : 'Connect with the Shinhan financial ecosystem',
@@ -676,6 +681,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.home-ecosystem-section',
+        positionIndex: 300,
         eyebrow: locale === 'vi' ? 'Hệ sinh thái đầu tư' : 'Investment ecosystem',
         title: locale === 'vi' ? 'Hệ sinh thái đầu tư đồng bộ' : 'Integrated ecosystem for modern investing',
         description:
@@ -698,6 +704,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.home-ai-stack-section',
+        positionIndex: 200,
         eyebrow: locale === 'vi' ? 'Hạ tầng AI & dữ liệu' : 'AI & data infrastructure',
         title:
           locale === 'vi'
@@ -732,6 +739,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.feature-card-section',
+        positionIndex: 400,
         title: locale === 'vi' ? 'Dịch vụ trọng tâm' : 'Core services',
         description:
           locale === 'vi'
@@ -774,7 +782,12 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
         ]
       },
       {
+        __component: 'sections.home-price-board-section',
+        positionIndex: 500
+      },
+      {
         __component: 'sections.trading-system-showcase-section',
+        positionIndex: 600,
         title: locale === 'vi' ? 'Hệ thống giao dịch doanh nghiệp' : 'Enterprise trading systems',
         description:
           locale === 'vi'
@@ -790,6 +803,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.stats-section',
+        positionIndex: 700,
         title: locale === 'vi' ? 'Năng lực vận hành' : 'Operational strengths',
         items: [
           { label: locale === 'vi' ? 'Khách hàng hoạt động' : 'Active clients', value: '85,000+' },
@@ -800,6 +814,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.news-list-section',
+        positionIndex: 800,
         title: locale === 'vi' ? 'Tin tức mới nhất' : 'Latest updates',
         description: locale === 'vi' ? 'Cập nhật thị trường và hoạt động doanh nghiệp.' : 'Market and corporate updates.',
         limit: 4,
@@ -807,6 +822,7 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.research-list-section',
+        positionIndex: 900,
         title: locale === 'vi' ? 'Điểm nhấn nghiên cứu' : 'Research highlights',
         description:
           locale === 'vi'
@@ -817,12 +833,14 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.faq-section',
+        positionIndex: 1000,
         title: locale === 'vi' ? 'Câu hỏi thường gặp' : 'Frequently asked questions',
         description: locale === 'vi' ? 'Giải đáp nhanh các quy trình phổ biến.' : 'Answers to common onboarding and service questions.',
         limit: 5
       },
       {
         __component: 'sections.cta-section',
+        positionIndex: 1100,
         title: locale === 'vi' ? 'Sẵn sàng bắt đầu hành trình đầu tư?' : 'Ready to start your investment journey?',
         description:
           locale === 'vi'
@@ -833,12 +851,14 @@ async function seedLocale(strapi: StrapiInstance, locale: Locale, media: SeedMed
       },
       {
         __component: 'sections.office-list-section',
+        positionIndex: 1200,
         title: locale === 'vi' ? 'Mạng lưới văn phòng' : 'Office network',
         description: locale === 'vi' ? 'Hệ thống chi nhánh hỗ trợ trên toàn quốc.' : 'Branch network supporting clients nationwide.',
         showMapPlaceholder: true
       },
       {
         __component: 'sections.trust-signal-section',
+        positionIndex: 1300,
         title: locale === 'vi' ? 'Nền tảng niềm tin' : 'Trust signals',
         description:
           locale === 'vi'

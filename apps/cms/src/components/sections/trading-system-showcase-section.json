@@ -5,6 +5,7 @@
   },
   "options": {},
   "attributes": {
+    "positionIndex": { "type": "integer", "default": 600 },
     "title": { "type": "string" },
     "description": { "type": "text" },
     "platformName": { "type": "string" },

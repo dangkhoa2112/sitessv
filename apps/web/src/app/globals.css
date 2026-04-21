@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #ececec;
+  --color-bg: linear-gradient(180deg, #f3f7fc 0%, #edf3f9 50%, #e8eff7 100%);
   --color-text: #1e1e1e;
   --color-primary: #00397f;
   --color-primary-strong: #002a5d;
@@ -25,7 +25,7 @@ body {
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -33,7 +33,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-serif), var(--font-sans), sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -587,6 +587,10 @@ img {
     radial-gradient(ellipse 124% 68% at 16% -10%, rgb(106 169 198 / 0.12), transparent 58%),
     radial-gradient(ellipse 110% 68% at 96% -8%, rgb(20 35 104 / 0.08), transparent 56%),
     linear-gradient(180deg, #f2f6fb 0%, #f8fafc 42%, #eef3f8 100%);
+}
+
+.subpage-shell--compact {
+  min-height: 0;
 }
 
 .subpage-hero {
@@ -1274,7 +1278,7 @@ img {
   position: absolute;
   right: 0.8rem;
   top: -0.4rem;
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 4.6rem;
   line-height: 1;
   color: rgb(255 255 255 / 0.15);

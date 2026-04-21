@@ -21,6 +21,7 @@ export interface SectionsCtaSection extends Schema.Component {
   };
   attributes: {
     description: Attribute.Text;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<1100>;
     primaryButton: Attribute.Component<'shared.button-config'>;
     secondaryButton: Attribute.Component<'shared.button-config'>;
     title: Attribute.String & Attribute.Required;
@@ -61,6 +62,7 @@ export interface SectionsFaqSection extends Schema.Component {
     description: Attribute.Text;
     faqCategorySlug: Attribute.String;
     limit: Attribute.Integer & Attribute.DefaultTo<6>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<1000>;
     title: Attribute.String;
   };
 }
@@ -73,6 +75,7 @@ export interface SectionsFeatureCardSection extends Schema.Component {
   attributes: {
     description: Attribute.Text;
     items: Attribute.Component<'shared.feature-item', true>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<400>;
     title: Attribute.String;
   };
 }
@@ -101,6 +104,7 @@ export interface SectionsHomeAiStackSection extends Schema.Component {
   attributes: {
     cards: Attribute.Component<'shared.home-ai-card', true>;
     eyebrow: Attribute.String;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<200>;
     title: Attribute.String & Attribute.Required;
   };
 }
@@ -115,11 +119,23 @@ export interface SectionsHomeEcosystemSection extends Schema.Component {
     description: Attribute.Text;
     eyebrow: Attribute.String;
     marketLabel: Attribute.String;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<300>;
     primaryButton: Attribute.Component<'shared.button-config'>;
     quickLinks: Attribute.Component<'shared.link-item', true>;
     secondaryButton: Attribute.Component<'shared.button-config'>;
     shortcutLinks: Attribute.Component<'shared.link-item', true>;
     title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface SectionsHomeMarketStripSection extends Schema.Component {
+  collectionName: 'components_home_market_strip_sections';
+  info: {
+    description: 'D\u1EA3i th\u1ECB tr\u01B0\u1EDDng realtime tr\u00EAn trang ch\u1EE7 / Realtime market strip on the homepage';
+    displayName: 'Kh\u1ED1i th\u1ECB tr\u01B0\u1EDDng trang ch\u1EE7 / Homepage Market Strip';
+  };
+  attributes: {
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<50>;
   };
 }
 
@@ -142,10 +158,22 @@ export interface SectionsHomeOneShinhanSection extends Schema.Component {
     officeLocationPrimary: Attribute.String;
     officeLocationSecondary: Attribute.String;
     partners: Attribute.Component<'shared.home-partner-item', true>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<100>;
     profileLabel: Attribute.String;
     subtitle: Attribute.Text;
     title: Attribute.String & Attribute.Required;
     visitLabel: Attribute.String;
+  };
+}
+
+export interface SectionsHomePriceBoardSection extends Schema.Component {
+  collectionName: 'components_home_price_board_sections';
+  info: {
+    description: 'Kh\u1ED1i b\u1EA3ng gi\u00E1 realtime tr\u00EAn trang ch\u1EE7 / Realtime price board on the homepage';
+    displayName: 'Kh\u1ED1i b\u1EA3ng gi\u00E1 trang ch\u1EE7 / Homepage Price Board';
+  };
+  attributes: {
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<500>;
   };
 }
 
@@ -158,6 +186,7 @@ export interface SectionsNewsListSection extends Schema.Component {
     description: Attribute.Text;
     featuredOnly: Attribute.Boolean & Attribute.DefaultTo<false>;
     limit: Attribute.Integer & Attribute.DefaultTo<6>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<800>;
     title: Attribute.String;
   };
 }
@@ -169,6 +198,7 @@ export interface SectionsOfficeListSection extends Schema.Component {
   };
   attributes: {
     description: Attribute.Text;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<1200>;
     showMapPlaceholder: Attribute.Boolean & Attribute.DefaultTo<true>;
     title: Attribute.String;
   };
@@ -211,6 +241,7 @@ export interface SectionsResearchListSection extends Schema.Component {
     description: Attribute.Text;
     featuredOnly: Attribute.Boolean & Attribute.DefaultTo<false>;
     limit: Attribute.Integer & Attribute.DefaultTo<6>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<900>;
     title: Attribute.String;
   };
 }
@@ -233,6 +264,7 @@ export interface SectionsStatsSection extends Schema.Component {
   };
   attributes: {
     items: Attribute.Component<'shared.stat-item', true>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<700>;
     title: Attribute.String;
   };
 }
@@ -272,6 +304,7 @@ export interface SectionsTradingSystemShowcaseSection extends Schema.Component {
     description: Attribute.Text;
     features: Attribute.JSON;
     platformName: Attribute.String;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<600>;
     screenshot: Attribute.Media<'images'>;
     title: Attribute.String;
   };
@@ -285,6 +318,7 @@ export interface SectionsTrustSignalSection extends Schema.Component {
   attributes: {
     description: Attribute.Text;
     items: Attribute.Component<'shared.trust-item', true>;
+    positionIndex: Attribute.Integer & Attribute.DefaultTo<1300>;
     title: Attribute.String;
   };
 }
@@ -534,7 +568,9 @@ declare module '@strapi/types' {
       'sections.hero-block': SectionsHeroBlock;
       'sections.home-ai-stack-section': SectionsHomeAiStackSection;
       'sections.home-ecosystem-section': SectionsHomeEcosystemSection;
+      'sections.home-market-strip-section': SectionsHomeMarketStripSection;
       'sections.home-one-shinhan-section': SectionsHomeOneShinhanSection;
+      'sections.home-price-board-section': SectionsHomePriceBoardSection;
       'sections.news-list-section': SectionsNewsListSection;
       'sections.office-list-section': SectionsOfficeListSection;
       'sections.quote-section': SectionsQuoteSection;
