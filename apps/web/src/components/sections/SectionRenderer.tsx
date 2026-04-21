@@ -12,7 +12,7 @@ function pickFirst<T>(...values: Array<T | undefined | null>) {
   return undefined;
 }
 
-export function SectionRenderer({ sections }: { sections?: Array<any> }) {
+export function SectionRenderer({ sections, locale }: { sections?: Array<any>; locale?: 'vi' | 'en' }) {
   if (!sections?.length) return null;
 
   return (
@@ -167,6 +167,18 @@ export function SectionRenderer({ sections }: { sections?: Array<any> }) {
 
           case 'ComponentSectionsRelatedContentSection': {
             const relatedType = section.contentType?.data?.attributes?.title || section.contentType?.data?.attributes?.slug;
+            const relatedSlug = section.contentType?.data?.attributes?.slug;
+            const localePrefix = locale ? `/${locale}` : '';
+            const relatedHref =
+              relatedSlug === 'news'
+                ? `${localePrefix}/news`
+                : relatedSlug === 'research'
+                  ? `${localePrefix}/research`
+                  : relatedSlug === 'events'
+                    ? `${localePrefix}/events`
+                    : relatedSlug === 'services'
+                      ? `${localePrefix}/services`
+                      : undefined;
             return (
               <section key={`${section.__typename}-${index}`} className="subpage-glass-card p-5">
                 {pickFirst(section.relatedTitle, section.title) ? (
@@ -174,8 +186,13 @@ export function SectionRenderer({ sections }: { sections?: Array<any> }) {
                 ) : null}
                 {relatedType ? <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary)]">{relatedType}</p> : null}
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  This related-content section is CMS-driven, so editors can change the content family without changing code.
+                  This related-content section can surface the closest hub page so readers can move from detail content back to the broader topic family.
                 </p>
+                {relatedHref ? (
+                  <Link href={relatedHref} className="mt-3 inline-flex text-sm font-semibold text-[var(--color-primary)]">
+                    View {relatedType || 'related hub'}
+                  </Link>
+                ) : null}
               </section>
             );
           }

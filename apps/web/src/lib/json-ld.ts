@@ -1,11 +1,15 @@
 import { SITE_NAME, SITE_URL } from './constants';
 import { absoluteUrl, assetUrl } from './urls';
 
+function stripHtml(value?: string) {
+  return value?.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 export function organizationJsonLd(locale: string, data?: Record<string, any>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: data?.organizationName || SITE_NAME,
+    name: SITE_NAME,
     url: SITE_URL,
     logo: data?.logo?.data?.attributes?.url ? absoluteUrl(assetUrl(data.logo.data.attributes.url) || data.logo.data.attributes.url) : undefined,
     contactPoint: [
@@ -50,6 +54,22 @@ export function breadcrumbJsonLd(
   };
 }
 
+export function webPageJsonLd(input: {
+  name: string;
+  description?: string;
+  url: string;
+  inLanguage?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: input.name,
+    description: stripHtml(input.description),
+    url: input.url,
+    inLanguage: input.inLanguage
+  };
+}
+
 export function articleJsonLd(input: {
   headline: string;
   description?: string;
@@ -86,8 +106,94 @@ export function faqJsonLd(items: Array<{ question: string; answer: string }>) {
       name: item.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer
+        text: stripHtml(item.answer)
       }
     }))
+  };
+}
+
+export function serviceJsonLd(input: {
+  name: string;
+  description?: string;
+  url: string;
+  providerName?: string;
+  imageUrl?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: input.name,
+    description: stripHtml(input.description),
+    url: input.url,
+    provider: input.providerName
+      ? {
+          '@type': 'Organization',
+          name: input.providerName
+        }
+      : undefined,
+    image: input.imageUrl
+  };
+}
+
+export function eventJsonLd(input: {
+  name: string;
+  description?: string;
+  url: string;
+  startDate?: string;
+  endDate?: string;
+  imageUrl?: string;
+  locationName?: string;
+  locationAddress?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: input.name,
+    description: stripHtml(input.description),
+    url: input.url,
+    startDate: input.startDate,
+    endDate: input.endDate,
+    image: input.imageUrl,
+    location: input.locationName || input.locationAddress
+      ? {
+          '@type': 'Place',
+          name: input.locationName,
+          address: input.locationAddress
+        }
+      : undefined
+  };
+}
+
+export function jobPostingJsonLd(input: {
+  title: string;
+  description?: string;
+  url: string;
+  datePosted?: string;
+  validThrough?: string;
+  employmentType?: string;
+  hiringOrganizationName?: string;
+  jobLocation?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: input.title,
+    description: stripHtml(input.description),
+    url: input.url,
+    datePosted: input.datePosted,
+    validThrough: input.validThrough,
+    employmentType: input.employmentType,
+    hiringOrganization: input.hiringOrganizationName
+      ? {
+          '@type': 'Organization',
+          name: input.hiringOrganizationName
+        }
+      : undefined,
+    jobLocation: input.jobLocation
+      ? {
+          '@type': 'Place',
+          address: input.jobLocation
+        }
+      : undefined
   };
 }

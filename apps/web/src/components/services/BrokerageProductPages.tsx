@@ -3,10 +3,13 @@ import type { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { DownloadCard } from '@/components/ui/DownloadCard';
 import { InsightRail } from '@/components/ui/InsightRail';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { AdvisorInquiryModal } from '@/components/services/AdvisorInquiryModal';
+import { serviceJsonLd } from '@/lib/json-ld';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 import { SHINHAN_BRAND_LINKS } from '@/lib/shinhan-links';
+import { absoluteUrl } from '@/lib/urls';
 import { assetUrl } from '@/lib/urls';
 
 function isVi(locale: string) {
@@ -58,19 +61,32 @@ function ChecklistCard({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-export function BrokerageTradingPage({ locale }: { locale: string }) {
+function ServiceSchema({
+  name,
+  description,
+  schemaUrl
+}: {
+  name: string;
+  description: string;
+  schemaUrl: string;
+}) {
+  return <JsonLd data={serviceJsonLd({ name, description, url: absoluteUrl(schemaUrl) })} />;
+}
+
+export function BrokerageTradingPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
+  const title = vi ? 'Giao dịch trực tuyến' : 'Online trading';
+  const description = vi
+    ? 'Nền tảng giao dịch nhanh, ổn định và đa thiết bị, đáp ứng nhu cầu của nhà đầu tư hiện đại trên web, desktop và mobile.'
+    : 'Fast, stable, multi-device trading across web, desktop, and mobile for modern investors.';
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/giao-dich-truc-tuyen`} />
       <PageHero
         kicker={vi ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-        title={vi ? 'Giao dịch trực tuyến' : 'Online trading'}
-        subtitle={
-          vi
-            ? 'Nền tảng giao dịch nhanh, ổn định và đa thiết bị, đáp ứng nhu cầu của nhà đầu tư hiện đại trên web, desktop và mobile.'
-            : 'Fast, stable, multi-device trading across web, desktop, and mobile for modern investors.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['San Xin Ha', 'Shinhan Web Trading', 'Shinhan Home Trading'] : ['San Xin Ha', 'Web Trading', 'Home Trading']}
         imageUrl={SHINHAN_VISUALS.services.trading}
       />
@@ -344,8 +360,12 @@ function AdvisorCard({ advisor, locale }: { advisor: AdvisoryProfile; locale: st
   );
 }
 
-export function BrokerageAdvisoryPage({ locale, service }: { locale: string; service?: AdvisoryService | null }) {
+export function BrokerageAdvisoryPage({ locale, service, schemaUrl }: { locale: string; service?: AdvisoryService | null; schemaUrl?: string }) {
   const vi = isVi(locale);
+  const title = vi ? 'Tư vấn đầu tư chứng khoán' : 'Investment advisory';
+  const description = vi
+    ? 'Đội ngũ môi giới - tư vấn chuyên nghiệp đồng hành trong phân tích thị trường, ngành nghề và chiến lược đầu tư.'
+    : 'A professional advisory team supporting market analysis, sector insight, and investment strategy.';
   const advisors =
     service?.advisors?.length
       ? service.advisors
@@ -381,14 +401,11 @@ export function BrokerageAdvisoryPage({ locale, service }: { locale: string; ser
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/tu-van-dau-tu`} />
       <PageHero
         kicker={vi ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-        title={vi ? 'Tư vấn đầu tư chứng khoán' : 'Investment advisory'}
-        subtitle={
-          vi
-            ? 'Đội ngũ môi giới - tư vấn chuyên nghiệp đồng hành trong phân tích thị trường, ngành nghề và chiến lược đầu tư.'
-            : 'A professional advisory team supporting market analysis, sector insight, and investment strategy.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Đăng ký tại đây', 'Danh sách chuyên viên', 'Hỗ trợ chuyên nghiệp'] : ['Register here', 'Advisor directory', 'Dedicated support']}
         imageUrl={SHINHAN_VISUALS.services.investmentBanking.hero}
       />
@@ -476,18 +493,19 @@ export function BrokerageAdvisoryPage({ locale, service }: { locale: string; ser
   );
 }
 
-export function BrokerageFinancialPage({ locale }: { locale: string }) {
+export function BrokerageFinancialPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
+  const title = vi ? 'Dịch vụ tài chính' : 'Financial services';
+  const description = vi
+    ? 'Các giải pháp hỗ trợ tài chính dành cho nhà đầu tư chứng khoán, tập trung vào ký quỹ và ứng trước tiền bán.'
+    : 'Financial support products for securities investors, focused on margin and advance-cash services.';
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/dich-vu-tai-chinh`} />
       <PageHero
         kicker={vi ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-        title={vi ? 'Dịch vụ tài chính' : 'Financial services'}
-        subtitle={
-          vi
-            ? 'Các giải pháp hỗ trợ tài chính dành cho nhà đầu tư chứng khoán, tập trung vào ký quỹ và ứng trước tiền bán.'
-            : 'Financial support products for securities investors, focused on margin and advance-cash services.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Giao dịch ký quỹ', 'Ứng trước tiền bán', 'Lãi suất ưu đãi'] : ['Margin lending', 'Cash advance', 'Preferential rates']}
         imageUrl={SHINHAN_VISUALS.services.brokerage.hero}
       />
@@ -587,18 +605,19 @@ export function BrokerageFinancialPage({ locale }: { locale: string }) {
   );
 }
 
-export function SanXinHaPage({ locale }: { locale: string }) {
+export function SanXinHaPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
+  const title = vi ? 'San Xịn Ha' : 'San Xin Ha';
+  const description = vi
+    ? 'Ứng dụng đầu tư đột phá với ưu đãi giao dịch, AI Signal và trải nghiệm giao dịch đa nền tảng.'
+    : 'A breakthrough investing app with trading perks, AI Signal, and multi-platform access.';
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/san-xin-ha`} />
       <PageHero
         kicker={vi ? 'Ứng dụng đầu tư chứng khoán' : 'Stock investing app'}
-        title={vi ? 'San Xịn Ha' : 'San Xin Ha'}
-        subtitle={
-          vi
-            ? 'Ứng dụng đầu tư đột phá với ưu đãi giao dịch, AI Signal và trải nghiệm giao dịch đa nền tảng.'
-            : 'A breakthrough investing app with trading perks, AI Signal, and multi-platform access.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Miễn phí giao dịch', 'AI Signal', 'Đa tiện ích'] : ['Free trading', 'AI Signal', 'Multi-tool access']}
         imageUrl={SHINHAN_VISUALS.support.hero}
       />
@@ -643,9 +662,9 @@ export function SanXinHaPage({ locale }: { locale: string }) {
               </h2>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <DownloadCard title={vi ? 'Miễn lãi margin 60 ngày' : '60-day margin free period'} summary={vi ? '0% lãi vay margin trong 60 ngày đầu.' : '0% margin interest for the first 60 days.'} href={`/${locale}/support/dang-ky-giao-dich-ky-quy.html`} />
-                <DownloadCard title={vi ? 'Giảm 2% lãi vay' : '2% interest reduction'} summary={vi ? 'Áp dụng theo chiến dịch đến hết năm 2025.' : 'Campaign-based rate reduction through 2025.'} href={`/${locale}/support/chuong-trinh-uu-dai`} />
+                <DownloadCard title={vi ? 'Giảm 2% lãi vay' : '2% interest reduction'} summary={vi ? 'Áp dụng theo chiến dịch đến hết năm 2025.' : 'Campaign-based rate reduction through 2025.'} href={`/${locale}/support`} />
                 <DownloadCard title={vi ? 'Mở tài khoản số đẹp' : 'Lucky account number'} summary={vi ? 'Tùy chọn số tài khoản yêu thích.' : 'Choose your preferred account number.'} href={`/${locale}/support/mo-tai-khoan-truc-tuyen.html`} />
-                <DownloadCard title={vi ? 'Quà tặng lên tới 2.500.000 VNĐ' : 'Gifts up to 2.5M VND'} summary={vi ? 'Tặng công cụ đầu tư và ưu đãi giới thiệu.' : 'App benefits and referral gifts.'} href={`/${locale}/support/chuong-trinh-uu-dai`} />
+                <DownloadCard title={vi ? 'Quà tặng lên tới 2.500.000 VNĐ' : 'Gifts up to 2.5M VND'} summary={vi ? 'Tặng công cụ đầu tư và ưu đãi giới thiệu.' : 'App benefits and referral gifts.'} href={`/${locale}/support`} />
               </div>
             </div>
           </section>

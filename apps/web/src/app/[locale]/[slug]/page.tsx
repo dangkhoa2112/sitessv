@@ -59,7 +59,7 @@ export default async function GenericPage({
               { label: page.title, href: `/${locale}/${canonicalSlug}` }
             ]}
           />
-          <SectionRenderer sections={page.sections} />
+          <SectionRenderer sections={page.sections} locale={locale as 'vi' | 'en'} />
         </div>
       </div>
     </>

@@ -8,6 +8,7 @@ import { RichText } from '@/components/ui/RichText';
 import { TagChip } from '@/components/ui/TagChip';
 import { getNewsBySlug, getRelatedContent } from '@/lib/cms-api';
 import { articleJsonLd } from '@/lib/json-ld';
+import { SITE_NAME } from '@/lib/constants';
 import { resolveLocalizedSlug } from '@/lib/localized-slug';
 import { buildPageMetadata } from '@/lib/seo';
 import { absoluteUrl, assetUrl } from '@/lib/urls';
@@ -39,6 +40,7 @@ export async function generateMetadata({
     locale,
     pathname: `/${locale}/news/${canonicalSlug}`,
     seo: article?.seo,
+    kind: 'article',
     fallback: {
       title: article?.title,
       description: article?.summary
@@ -101,7 +103,7 @@ export default async function NewsDetailPage({
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === 'vi' ? 'Tác giả' : 'Author'}</p>
-              <p className="mt-1 font-medium text-slate-900">{article.author?.data?.attributes?.name || 'Shinhan Securities'}</p>
+              <p className="mt-1 font-medium text-slate-900">{article.author?.data?.attributes?.name || SITE_NAME}</p>
             </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">{locale === 'vi' ? 'Cập nhật' : 'Updated'}</p>

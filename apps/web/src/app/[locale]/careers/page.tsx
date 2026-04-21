@@ -27,11 +27,11 @@ export async function generateMetadata({
     basePath: `/${locale}/careers`,
     page: pageNumber,
     hasSearchQuery,
-    title: locale === 'vi' ? 'Tuyển dụng FinTrust' : 'FinTrust Careers',
+    title: locale === 'vi' ? 'Tuyển dụng Shinhan Securities Vietnam' : 'Shinhan Securities Vietnam Careers',
     description:
       locale === 'vi'
-        ? 'Cơ hội nghề nghiệp trong lĩnh vực chứng khoán, tư vấn, vận hành và công nghệ tại FinTrust.'
-        : 'Career opportunities in securities, advisory, operations, and technology at FinTrust.'
+        ? 'Cơ hội nghề nghiệp trong lĩnh vực chứng khoán, tư vấn, vận hành và công nghệ tại Shinhan Securities Vietnam.'
+        : 'Career opportunities in securities, advisory, operations, and technology at Shinhan Securities Vietnam.'
   });
 }
 
@@ -62,8 +62,8 @@ export default async function CareersPage({
         title={locale === 'vi' ? 'Tuyển dụng' : 'Careers'}
         subtitle={
           locale === 'vi'
-            ? 'Gia nhập đội ngũ chuyên gia tài chính, vận hành và công nghệ của FinTrust.'
-            : 'Join FinTrust across advisory, operations, and technology roles.'
+            ? 'Gia nhập đội ngũ chuyên gia tài chính, vận hành và công nghệ của Shinhan Securities Vietnam.'
+            : 'Join Shinhan Securities Vietnam across advisory, operations, and technology roles.'
         }
         highlights={locale === 'vi' ? ['Research', 'Treasury', 'Business Analyst'] : ['Research', 'Treasury', 'Business Analyst']}
         imageUrl={assetUrl(cmsPage?.coverImage?.data?.attributes?.url) || SHINHAN_VISUALS.services.research.hero}
@@ -98,7 +98,13 @@ export default async function CareersPage({
                   ]
             }
           />
-          <SearchBar action={`/${locale}/careers`} search={q} placeholder={locale === 'vi' ? 'Tìm vị trí...' : 'Search jobs...'} />
+          <SearchBar
+            action={`/${locale}/careers`}
+            search={q}
+            placeholder={locale === 'vi' ? 'Tìm vị trí...' : 'Search jobs...'}
+            label={locale === 'vi' ? 'Tìm vị trí' : 'Search jobs'}
+            buttonLabel={locale === 'vi' ? 'Tìm' : 'Search'}
+          />
           {data.items.length === 0 ? (
             <EmptyState
               title={locale === 'vi' ? 'Chưa có vị trí phù hợp' : 'No matching roles'}
@@ -119,7 +125,14 @@ export default async function CareersPage({
               ))}
             </div>
           )}
-          <Pagination page={currentPage} pageCount={data.pagination?.pageCount || 1} basePath={`/${locale}/careers`} query={q || ''} />
+          <Pagination
+            page={currentPage}
+            pageCount={data.pagination?.pageCount || 1}
+            basePath={`/${locale}/careers`}
+            query={q || ''}
+            previousLabel={locale === 'vi' ? 'Trước' : 'Prev'}
+            nextLabel={locale === 'vi' ? 'Sau' : 'Next'}
+          />
         </div>
       </div>
     </>

@@ -8,6 +8,9 @@ export type HomeLocale = 'vi' | 'en';
 export type LocaleContent = {
   metaTitle: string;
   metaDescription: string;
+  heroEyebrow: string;
+  heroTitle: string;
+  heroDescription: string;
   services: Array<{ title: string; desc: string; href: string; bg: string | StaticImageData; icon: string | StaticImageData }>;
   aiCards: Array<{ title: string; desc: string; value: string }>;
   heroSlides: HeroBannerSlide[];
@@ -28,10 +31,14 @@ export const CONTENT: Record<HomeLocale, LocaleContent> = {
     metaTitle: 'Chứng khoán Shinhan Việt Nam (SSV) - Công ty Chứng khoán hàng đầu Hàn Quốc',
     metaDescription:
       'Đầu tư chứng khoán tại công ty Chứng khoán Shinhan Việt Nam (SSV). Hệ thống giao dịch hiện đại, mở tài khoản chứng khoán trực tuyến dễ dàng.',
+    heroEyebrow: 'Shinhan Securities Vietnam',
+    heroTitle: 'Giải pháp đầu tư và giao dịch cho nhà đầu tư hiện đại',
+    heroDescription:
+      'Kết hợp môi giới chứng khoán, ngân hàng đầu tư, dữ liệu thị trường và công cụ số để hỗ trợ quyết định nhanh, rõ ràng và có kiểm soát.',
     services: [
       { title: 'Ngân hàng đầu tư', desc: 'Shinhan cung cấp giải pháp tài chính tối ưu cho khách hàng doanh nghiệp.', href: '/vi/san-pham-dich-vu/ngan-hang-dau-tu', bg: SHINHAN_VISUALS.services.investmentBanking.hero, icon: SHINHAN_VISUALS.services.investmentBanking.icon },
       { title: 'Môi Giới Chứng Khoán', desc: 'Dịch vụ tư vấn đầu tư bởi các chuyên gia tài chính kết hợp nền tảng giao dịch kỹ thuật số hiện đại.', href: '/vi/san-pham-dich-vu/moi-gioi-chung-khoan', bg: SHINHAN_VISUALS.services.brokerage.hero, icon: SHINHAN_VISUALS.services.brokerage.icon },
-      { title: 'Thông tin đầu tư', desc: 'Cập nhật kịp thời thông tin phân tích, khuyến nghị và chuyển động thị trường cho khách hàng.', href: '/vi/trung-tam-phan-tich', bg: SHINHAN_VISUALS.services.research.hero, icon: SHINHAN_VISUALS.services.research.icon }
+      { title: 'Thông tin đầu tư', desc: 'Cập nhật kịp thời thông tin phân tích, khuyến nghị và chuyển động thị trường cho khách hàng.', href: '/vi/research', bg: SHINHAN_VISUALS.services.research.hero, icon: SHINHAN_VISUALS.services.research.icon }
     ],
     aiCards: [
       { title: 'AI Signal Engine', desc: 'Mô hình nhận diện xung lực thị trường và cảnh báo biến động theo thời gian thực.', value: '24/7 Monitoring' },
@@ -52,6 +59,10 @@ export const CONTENT: Record<HomeLocale, LocaleContent> = {
     metaTitle: 'Shinhan Securities Vietnam (SSV) - Leading Korean Securities Company',
     metaDescription:
       'Invest in securities at Shinhan Securities Vietnam (SSV). Modern trading infrastructure and online account opening in minutes.',
+    heroEyebrow: 'Shinhan Securities Vietnam',
+    heroTitle: 'Modern investing and trading solutions for active investors',
+    heroDescription:
+      'Combine brokerage, investment banking, market data, and digital tools to make decisions faster, clearer, and with more control.',
     services: [
       { title: 'Investment Banking', desc: 'Shinhan delivers optimized financing solutions for institutional and corporate clients.', href: '/en/services/investment-banking', bg: SHINHAN_VISUALS.services.investmentBanking.hero, icon: SHINHAN_VISUALS.services.investmentBanking.icon },
       { title: 'Securities Brokerage', desc: 'Advisory services by experienced experts, powered by modern digital trading technology.', href: '/en/services/moi-gioi-chung-khoan', bg: SHINHAN_VISUALS.services.brokerage.hero, icon: SHINHAN_VISUALS.services.brokerage.icon },
@@ -141,7 +152,7 @@ export function getPriceBoardCopy(locale: HomeLocale) {
     ? {
         eyebrow: 'Thị trường',
         title: 'Bảng giá trực tuyến',
-        liveLabel: 'Live market stream',
+        liveLabel: 'Market snapshot',
         tabs: [
           { label: 'HOSE', href: SHINHAN_BRAND_LINKS.trading.priceBoard('HSX') },
           { label: 'HNX', href: SHINHAN_BRAND_LINKS.trading.priceBoard('HNX') },
@@ -151,7 +162,7 @@ export function getPriceBoardCopy(locale: HomeLocale) {
     : {
         eyebrow: 'Markets',
         title: 'Online Price Board',
-        liveLabel: 'Live market stream',
+        liveLabel: 'Market snapshot',
         tabs: [
           { label: 'HOSE', href: SHINHAN_BRAND_LINKS.trading.priceBoard('HSX') },
           { label: 'HNX', href: SHINHAN_BRAND_LINKS.trading.priceBoard('HNX') },
@@ -166,7 +177,7 @@ export function getQuickLinks(locale: HomeLocale) {
         { label: 'Hướng dẫn mở tài khoản online', href: '/vi/support/mo-tai-khoan-truc-tuyen.html' },
         { label: 'Hướng dẫn giao dịch', href: '/vi/support/huong-dan-giao-dich.html' },
         { label: 'Hướng dẫn nộp & rút tiền', href: '/vi/services/moi-gioi-chung-khoan/dich-vu-tai-chinh.html' },
-        { label: 'Danh mục khuyến nghị', href: '/vi/trung-tam-phan-tich' }
+        { label: 'Danh mục khuyến nghị', href: '/vi/research' }
       ]
     : [
         { label: 'Online account guide', href: '/en/support/mo-tai-khoan-truc-tuyen.html' },

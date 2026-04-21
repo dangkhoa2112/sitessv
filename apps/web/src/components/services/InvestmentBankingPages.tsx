@@ -3,8 +3,11 @@ import type { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { DownloadCard } from '@/components/ui/DownloadCard';
 import { InsightRail } from '@/components/ui/InsightRail';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { serviceJsonLd } from '@/lib/json-ld';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
+import { absoluteUrl } from '@/lib/urls';
 
 function isVi(locale: string) {
   return locale === 'vi';
@@ -61,9 +64,25 @@ function DealItem({
   );
 }
 
-export function InvestmentBankingLandingPage({ locale }: { locale: string }) {
+function ServiceSchema({
+  name,
+  description,
+  schemaUrl
+}: {
+  name: string;
+  description: string;
+  schemaUrl: string;
+}) {
+  return <JsonLd data={serviceJsonLd({ name, description, url: absoluteUrl(schemaUrl) })} />;
+}
+
+export function InvestmentBankingLandingPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
   const base = `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}`;
+  const title = vi ? 'Ngân hàng đầu tư' : 'Investment banking';
+  const description = vi
+    ? 'Shinhan đóng vai trò cầu nối cho các giao dịch vốn cổ phần và vốn nợ, đồng hành doanh nghiệp trong M&A, phát hành và thu xếp vốn.'
+    : 'Shinhan acts as a bridge for equity and debt capital transactions, supporting M&A, issuance, and funding.';
 
   const services = [
     {
@@ -106,14 +125,11 @@ export function InvestmentBankingLandingPage({ locale }: { locale: string }) {
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}`} />
       <PageHero
         kicker={vi ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-        title={vi ? 'Ngân hàng đầu tư' : 'Investment banking'}
-        subtitle={
-          vi
-            ? 'Shinhan đóng vai trò cầu nối cho các giao dịch vốn cổ phần và vốn nợ, đồng hành doanh nghiệp trong M&A, phát hành và thu xếp vốn.'
-            : 'Shinhan acts as a bridge for equity and debt capital transactions, supporting M&A, issuance, and funding.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Thị trường vốn', 'Thị trường nợ', 'Giao dịch tiêu biểu'] : ['ECM', 'DCM', 'Selected transactions']}
         imageUrl={SHINHAN_VISUALS.services.investmentBanking.hero}
       />
@@ -207,20 +223,21 @@ export function InvestmentBankingLandingPage({ locale }: { locale: string }) {
   );
 }
 
-export function EquityMarketPage({ locale }: { locale: string }) {
+export function EquityMarketPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
   const base = `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}`;
+  const title = vi ? 'Thị trường vốn (ECM)' : 'Equity capital markets (ECM)';
+  const description = vi
+    ? 'Shinhan là cầu nối cho các giao dịch vốn cổ phần xuyên biên giới và các đợt chào bán cổ phần tại Việt Nam.'
+    : 'Shinhan bridges cross-border equity transactions and share offerings in Vietnam.';
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-von.html`} />
       <PageHero
         kicker={vi ? 'Ngân hàng đầu tư' : 'Investment banking'}
-        title={vi ? 'Thị trường vốn (ECM)' : 'Equity capital markets (ECM)'}
-        subtitle={
-          vi
-            ? 'Shinhan là cầu nối cho các giao dịch vốn cổ phần xuyên biên giới và các đợt chào bán cổ phần tại Việt Nam.'
-            : 'Shinhan bridges cross-border equity transactions and share offerings in Vietnam.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Tư vấn giao dịch', 'Tư vấn M&A', 'Chào bán & phân phối cổ phần'] : ['Transaction advisory', 'M&A advisory', 'Share distribution']}
         imageUrl={SHINHAN_VISUALS.services.investmentBanking.hero}
       />
@@ -314,20 +331,21 @@ export function EquityMarketPage({ locale }: { locale: string }) {
   );
 }
 
-export function DebtMarketPage({ locale }: { locale: string }) {
+export function DebtMarketPage({ locale, schemaUrl }: { locale: string; schemaUrl?: string }) {
   const vi = isVi(locale);
   const base = `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}`;
+  const title = vi ? 'Thị trường nợ (DCM)' : 'Debt capital markets (DCM)';
+  const description = vi
+    ? 'Tư vấn và thu xếp nguồn vốn trung - dài hạn qua trái phiếu, khoản vay và các sản phẩm tài trợ.'
+    : 'Advisory and capital raising across bonds, loans, and financing structures.';
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/${vi ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-no.html`} />
       <PageHero
         kicker={vi ? 'Ngân hàng đầu tư' : 'Investment banking'}
-        title={vi ? 'Thị trường nợ (DCM)' : 'Debt capital markets (DCM)'}
-        subtitle={
-          vi
-            ? 'Tư vấn và thu xếp nguồn vốn trung - dài hạn qua trái phiếu, khoản vay và các sản phẩm tài trợ.'
-            : 'Advisory and capital raising across bonds, loans, and financing structures.'
-        }
+        title={title}
+        subtitle={description}
         highlights={vi ? ['Trái phiếu doanh nghiệp', 'Khoản vay quốc tế', 'CD trading'] : ['Corporate bonds', 'Foreign loans', 'CD trading']}
         imageUrl={SHINHAN_VISUALS.services.investmentBanking.hero}
       />

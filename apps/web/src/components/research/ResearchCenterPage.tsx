@@ -203,7 +203,13 @@ export function ResearchCenterPage({ locale, data, search, page, heroImageUrl }:
               </div>
             </div>
             <div className="mt-4">
-              <SearchBar action={`/${locale}/research`} search={search} placeholder={vi ? 'Tìm báo cáo...' : 'Search reports...'} />
+              <SearchBar
+                action={`/${locale}/research`}
+                search={search}
+                placeholder={vi ? 'Tìm báo cáo...' : 'Search reports...'}
+                label={vi ? 'Tìm báo cáo' : 'Search reports'}
+                buttonLabel={vi ? 'Tìm' : 'Search'}
+              />
             </div>
 
             {data.items.length === 0 ? (
@@ -220,6 +226,8 @@ export function ResearchCenterPage({ locale, data, search, page, heroImageUrl }:
                 pageCount={data.pagination?.pageCount || 1}
                 basePath={`/${locale}/research`}
                 query={search || ''}
+                previousLabel={vi ? 'Trước' : 'Prev'}
+                nextLabel={vi ? 'Sau' : 'Next'}
               />
             </div>
           </section>

@@ -25,6 +25,7 @@ export async function generateMetadata({
     locale,
     pathname: `/${locale}/research/${canonicalSlug}`,
     seo: report?.seo,
+    kind: 'article',
     fallback: {
       title: report?.title,
       description: report?.summary

@@ -82,7 +82,13 @@ export default async function SearchPage({
                   ]
             }
           />
-          <SearchBar action={`/${locale}/search`} search={query} placeholder={locale === 'vi' ? 'Nhập từ khóa tìm kiếm...' : 'Type your search term...'} />
+          <SearchBar
+            action={`/${locale}/search`}
+            search={query}
+            placeholder={locale === 'vi' ? 'Nhập từ khóa tìm kiếm...' : 'Type your search term...'}
+            label={locale === 'vi' ? 'Tìm kiếm' : 'Search'}
+            buttonLabel={locale === 'vi' ? 'Tìm' : 'Search'}
+          />
 
           {!hasQuery ? (
             <EmptyState

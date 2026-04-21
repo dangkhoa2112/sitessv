@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { SITE_NAME } from '@/lib/constants';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 import { SHINHAN_BRAND_LINKS } from '@/lib/shinhan-links';
 
@@ -148,7 +149,7 @@ export function Footer({
   const resolvedCopyright =
     copyrightText && /shinhan securities vietnam/i.test(copyrightText)
       ? copyrightText
-      : '© Copyright 2020 Shinhan Securities Vietnam';
+      : `© Copyright 2020 ${SITE_NAME}`;
   const labels =
     locale === 'en'
       ? {

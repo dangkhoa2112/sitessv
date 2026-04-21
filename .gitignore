@@ -14,3 +14,7 @@ apps/cms/.tmp
 apps/cms/build
 apps/cms/database
 apps/cms/public/uploads
+
+# Audit PDF build artifacts (local Chrome + pypdf)
+audit/.pdf-build
+audit/.pypdf

@@ -71,11 +71,8 @@ export function HomePriceBoard({
                   </Button>
                 ))}
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/[0.08] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-800 shadow-[0_0_12px_-4px_rgba(16,185,129,0.35)]">
-                <span
-                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.85)] motion-safe:animate-pulse"
-                  aria-hidden
-                />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-700">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-500" aria-hidden />
                 {liveLabel}
               </span>
             </div>

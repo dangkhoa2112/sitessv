@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { InsightRail } from '@/components/ui/InsightRail';
+import { serviceJsonLd } from '@/lib/json-ld';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 import { SHINHAN_BRAND_LINKS } from '@/lib/shinhan-links';
+import { absoluteUrl } from '@/lib/urls';
 
 type BrokerageLandingPageProps = {
   locale: string;
+  schemaUrl?: string;
 };
 
 const ICONS = {
@@ -19,8 +23,24 @@ function isVi(locale: string) {
   return locale === 'vi';
 }
 
-export function BrokerageLandingPage({ locale }: BrokerageLandingPageProps) {
+function ServiceSchema({
+  name,
+  description,
+  schemaUrl
+}: {
+  name: string;
+  description: string;
+  schemaUrl: string;
+}) {
+  return <JsonLd data={serviceJsonLd({ name, description, url: absoluteUrl(schemaUrl) })} />;
+}
+
+export function BrokerageLandingPage({ locale, schemaUrl }: BrokerageLandingPageProps) {
   const vi = isVi(locale);
+  const title = vi ? 'Môi giới chứng khoán' : 'Securities brokerage';
+  const description = vi
+    ? 'Chúng tôi ở đây để đồng hành cùng mục tiêu tài chính của bạn với trải nghiệm giao dịch, tư vấn và giải pháp tài chính được thiết kế cho nhà đầu tư hiện đại.'
+    : 'We are here to support your financial goals with trading, advice, and financing built for modern investors.';
 
   const services = [
     {
@@ -109,14 +129,11 @@ export function BrokerageLandingPage({ locale }: BrokerageLandingPageProps) {
 
   return (
     <>
+      <ServiceSchema name={title} description={description} schemaUrl={schemaUrl || `/${locale}/services/moi-gioi-chung-khoan`} />
       <PageHero
         kicker={vi ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-        title={vi ? 'Môi giới chứng khoán' : 'Securities brokerage'}
-        subtitle={
-          vi
-            ? 'Chúng tôi ở đây để đồng hành cùng mục tiêu tài chính của bạn với trải nghiệm giao dịch, tư vấn và giải pháp tài chính được thiết kế cho nhà đầu tư hiện đại.'
-            : 'We are here to support your financial goals with trading, advice, and financing built for modern investors.'
-        }
+        title={title}
+        subtitle={description}
         highlights={
           vi
             ? ['Tối đa hóa lợi nhuận', 'Đa dạng hóa đầu tư', 'Nền tảng tài chính vững vàng']

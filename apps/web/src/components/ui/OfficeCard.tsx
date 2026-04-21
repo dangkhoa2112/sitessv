@@ -25,13 +25,21 @@ export function OfficeCard({
         {phone ? (
           <div>
             <dt className="inline font-semibold">Phone: </dt>
-            <dd className="inline">{phone}</dd>
+            <dd className="inline">
+              <a href={`tel:${phone.replace(/\s+/g, '')}`} className="text-[var(--color-primary)] hover:underline">
+                {phone}
+              </a>
+            </dd>
           </div>
         ) : null}
         {email ? (
           <div>
             <dt className="inline font-semibold">Email: </dt>
-            <dd className="inline">{email}</dd>
+            <dd className="inline">
+              <a href={`mailto:${email}`} className="text-[var(--color-primary)] hover:underline">
+                {email}
+              </a>
+            </dd>
           </div>
         ) : null}
         {workingHours ? (

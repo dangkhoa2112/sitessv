@@ -6,5 +6,5 @@ export default async function SupportPromotionsHtmlAliasPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  permanentRedirect(`/${locale}/support/chuong-trinh-uu-dai`);
+  permanentRedirect(`/${locale}/support`);
 }

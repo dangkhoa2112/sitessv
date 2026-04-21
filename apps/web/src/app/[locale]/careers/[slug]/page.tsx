@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import Link from 'next/link';
 import { EditorialIntro } from '@/components/layout/EditorialIntro';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { RichText } from '@/components/ui/RichText';
 import { getCareerBySlug, getPageBySlug } from '@/lib/cms-api';
+import { jobPostingJsonLd } from '@/lib/json-ld';
 import { resolveLocalizedSlug } from '@/lib/localized-slug';
 import { buildPageMetadata } from '@/lib/seo';
-import { assetUrl } from '@/lib/urls';
+import { absoluteUrl, assetUrl } from '@/lib/urls';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 
 export async function generateMetadata({
@@ -22,6 +24,7 @@ export async function generateMetadata({
     locale,
     pathname: `/${locale}/careers/${canonicalSlug}`,
     seo: job?.seo,
+    kind: 'job',
     fallback: {
       title: job?.title,
       description: job?.summary
@@ -50,6 +53,20 @@ export default async function CareerDetailPage({
 
   return (
     <>
+      <JsonLd
+        data={
+          jobPostingJsonLd({
+            title: job.title,
+            description: job.summary || job.description,
+            url: absoluteUrl(`/${locale}/careers/${canonicalSlug}`),
+            datePosted: job.publishDate,
+            validThrough: job.applicationDeadline,
+            employmentType: employmentTypeLabel,
+            hiringOrganizationName: 'Shinhan Securities Vietnam',
+            jobLocation: job.location
+          })
+        }
+      />
       <EditorialIntro
         breadcrumbs={[
           { label: locale === 'vi' ? 'Trang chủ' : 'Home', href: `/${locale}` },

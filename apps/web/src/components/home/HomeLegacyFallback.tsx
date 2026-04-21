@@ -1,5 +1,6 @@
 import { type HeroBannerSlide } from '@/components/home/HeroBannerSlider';
-import { CONTENT, type HomeLocale } from './home-legacy-content';
+import { CONTENT, getAccountTrustItems, getHeroCtas, type HomeLocale } from './home-legacy-content';
+import { HomeLegacyIntroSection } from './HomeLegacyIntroSection';
 import { HomeLegacyHeroSection } from './HomeLegacyHeroSection';
 import { HomeLegacyAiStackSection } from './HomeLegacyAiStackSection';
 import { HomeLegacyEcosystemSection } from './HomeLegacyEcosystemSection';
@@ -64,16 +65,22 @@ export function HomeLegacyFallback({
         nextSlideLabel={heroCarouselNext || content.heroCarouselNext}
       />
 
+      <HomeLegacyIntroSection
+        eyebrow={content.heroEyebrow}
+        title={content.heroTitle}
+        description={content.heroDescription}
+        primaryCta={getHeroCtas(locale).primary}
+        secondaryCta={getHeroCtas(locale).secondary}
+        trustItems={getAccountTrustItems(locale)}
+      />
+
       <div className="home-main-canvas home-fin-wrap relative z-10 ">
-        {!hideMarketStrip ? <HomeLegacyMarketStrip locale={locale} boardDate={boardDate} /> : null}
-        
-        {!hideAiStack ? <HomeLegacyAiStackSection locale={locale} /> : null}
         {!hideOpenAccount ? <HomeLegacyOpenAccountSection locale={locale} /> : null}
-
-        {!hidePriceBoard ? <HomeLegacyPriceBoardSection locale={locale} boardDate={boardDate} /> : null}
-
-        {!hideTrading ? <HomeLegacyTradingSection locale={locale} /> : null}
+        {!hideMarketStrip ? <HomeLegacyMarketStrip locale={locale} boardDate={boardDate} /> : null}
         {!hideServices ? <HomeLegacyServicesSection locale={locale} /> : null}
+        {!hidePriceBoard ? <HomeLegacyPriceBoardSection locale={locale} boardDate={boardDate} /> : null}
+        {!hideTrading ? <HomeLegacyTradingSection locale={locale} /> : null}
+        {!hideAiStack ? <HomeLegacyAiStackSection locale={locale} /> : null}
         {!hideEcosystem ? <HomeLegacyEcosystemSection locale={locale} /> : null}
       </div>
     </>

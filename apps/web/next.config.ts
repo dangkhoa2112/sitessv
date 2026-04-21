@@ -6,7 +6,6 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const viSeoRoutes = [
   ['about', 'gioi-thieu'],
   ['services', 'san-pham-dich-vu'],
-  ['research', 'trung-tam-phan-tich'],
   ['support', 'ho-tro-khach-hang'],
   ['contact', 'lien-he'],
   ['careers', 'nghe-nghiep'],

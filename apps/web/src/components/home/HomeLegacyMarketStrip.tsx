@@ -33,7 +33,8 @@ export function HomeLegacyMarketStrip({ locale, boardDate }: HomeLegacyMarketStr
         <article className="home-market-card home-market-card--overview">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f0cc94]">{ecosystemCopy.marketLabel}</p>
           <h3 className="mt-2 text-[1.45rem] font-medium leading-tight text-white">{priceCopy.title}</h3>
-          <p className="mt-1.5 text-[12px] text-white/72">{boardDate}</p>
+          <p className="mt-1.5 text-[12px] text-white/72">{priceCopy.liveLabel}</p>
+          <p className="mt-0.5 text-[12px] text-white/72">{boardDate}</p>
         </article>
       </div>
     </section>

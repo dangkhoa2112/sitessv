@@ -1,4 +1,4 @@
-export const SITE_NAME = 'FinTrust Securities';
+export const SITE_NAME = 'Shinhan Securities Vietnam';
 
 export const LOCALES = ['vi', 'en'] as const;
 export type SiteLocale = (typeof LOCALES)[number];

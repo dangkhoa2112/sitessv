@@ -25,6 +25,7 @@ type BuildSeoInput = {
   locale: string;
   pathname: string;
   seo?: SeoMetaInput | null;
+  kind?: 'website' | 'article' | 'service' | 'event' | 'job' | 'faq';
   fallback?: {
     title?: string;
     description?: string;
@@ -84,7 +85,7 @@ function parseMetaRobots(metaRobots?: string | null): Metadata['robots'] {
   };
 }
 
-export function buildPageMetadata({ locale, pathname, seo, fallback }: BuildSeoInput): Metadata {
+export function buildPageMetadata({ locale, pathname, seo, fallback, kind = 'website' }: BuildSeoInput): Metadata {
   const title = seo?.metaTitle || fallback?.title || SITE_NAME;
   const description =
     seo?.metaDescription || fallback?.description || 'Enterprise fintech and securities corporate platform.';
@@ -115,7 +116,7 @@ export function buildPageMetadata({ locale, pathname, seo, fallback }: BuildSeoI
     openGraph: {
       title: seo?.ogTitle || title,
       description: seo?.ogDescription || description,
-      type: 'website',
+      type: kind === 'article' ? 'article' : 'website',
       locale: locale === 'vi' ? 'vi_VN' : 'en_US',
       url: canonical,
       siteName: SITE_NAME,

@@ -19,6 +19,7 @@ export async function generateMetadata({
   return buildPageMetadata({
     locale,
     pathname: `/${locale}/faq`,
+    kind: 'faq',
     fallback: {
       title: locale === 'vi' ? 'Câu hỏi thường gặp' : 'Frequently Asked Questions',
       description:

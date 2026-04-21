@@ -19,6 +19,9 @@ export function ContentCard({
   category?: string;
   locale: string;
 }) {
+  const parsedDate = date ? new Date(date) : null;
+  const dateTime = parsedDate && !Number.isNaN(parsedDate.getTime()) ? parsedDate.toISOString() : undefined;
+
   return (
     <article className="group subpage-glass-card overflow-hidden transition hover:-translate-y-0.5 hover:shadow-[0_22px_38px_-28px_rgba(15,27,85,0.6)]">
       {imageUrl ? (
@@ -35,7 +38,7 @@ export function ContentCard({
       <div className="space-y-2.5 p-4">
         <div className="flex flex-wrap gap-1.5 text-xs text-slate-500">
           {category ? <span className="rounded-full border border-[#c8ddee] bg-[#edf5fb] px-2 py-1 font-medium text-slate-700">{category}</span> : null}
-          {date ? <time>{formatDate(date, locale === 'vi' ? 'vi-VN' : 'en-US')}</time> : null}
+          {date ? <time dateTime={dateTime}>{formatDate(date, locale === 'vi' ? 'vi-VN' : 'en-US')}</time> : null}
         </div>
         <h3 className="line-clamp-2 text-[1.02rem] font-semibold text-slate-900">
           <Link href={href} className="transition group-hover:text-[var(--color-primary)]">

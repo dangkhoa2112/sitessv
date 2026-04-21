@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { LocaleLangSync } from '@/components/layout/LocaleLangSync';
 import { FloatingQuickPanel } from '@/components/home/FloatingQuickPanel';
 import { getLayout } from '@/lib/cms-api';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -65,7 +66,8 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <JsonLd data={organizationJsonLd(locale, layout.global)} />
+      <LocaleLangSync locale={locale} />
+      <JsonLd data={layout.seoDefault?.organizationSchema || organizationJsonLd(locale, layout.global)} />
       <JsonLd data={websiteJsonLd(locale)} />
       <div className="flex min-h-screen flex-col">
         <Header

@@ -3,13 +3,15 @@ import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ContentCard } from '@/components/ui/ContentCard';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { RichText } from '@/components/ui/RichText';
 import { TagChip } from '@/components/ui/TagChip';
 import { getEventBySlug, listEvents } from '@/lib/cms-api';
+import { eventJsonLd } from '@/lib/json-ld';
 import { resolveLocalizedSlug } from '@/lib/localized-slug';
 import { buildPageMetadata } from '@/lib/seo';
-import { assetUrl } from '@/lib/urls';
+import { absoluteUrl, assetUrl } from '@/lib/urls';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 
 function formatDate(locale: string, value?: string) {
@@ -38,6 +40,7 @@ export async function generateMetadata({
     locale,
     pathname: `/${locale}/events/${canonicalSlug}`,
     seo: item?.seo,
+    kind: 'event',
     fallback: {
       title: item?.title,
       description: item?.summary
@@ -64,6 +67,19 @@ export default async function EventDetailPage({
 
   return (
     <>
+      <JsonLd
+        data={
+          eventJsonLd({
+            name: item.title,
+            description: item.summary,
+            url: absoluteUrl(`/${locale}/events/${canonicalSlug}`),
+            startDate: item.startDate,
+            endDate: item.endDate,
+            imageUrl: assetUrl(item.coverImage?.data?.attributes?.url),
+            locationName: item.location
+          })
+        }
+      />
       <PageHero
         title={item.title}
         subtitle={item.summary}

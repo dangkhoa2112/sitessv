@@ -7,7 +7,7 @@ type RoutePair = {
 
 const ROUTE_PAIRS: RoutePair[] = [
   { en: '/services', vi: '/san-pham-dich-vu' },
-  { en: '/research', vi: '/trung-tam-phan-tich' },
+  { en: '/research', vi: '/research' },
   { en: '/support', vi: '/ho-tro-khach-hang' },
   { en: '/contact', vi: '/lien-he' },
   { en: '/careers', vi: '/nghe-nghiep' },

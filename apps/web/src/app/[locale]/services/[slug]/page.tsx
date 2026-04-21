@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { DownloadCard } from '@/components/ui/DownloadCard';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { RichText } from '@/components/ui/RichText';
 import { TagChip } from '@/components/ui/TagChip';
@@ -13,9 +14,11 @@ import {
   SanXinHaPage
 } from '@/components/services/BrokerageProductPages';
 import { InvestmentBankingLandingPage, EquityMarketPage, DebtMarketPage } from '@/components/services/InvestmentBankingPages';
-import { getServiceBySlug } from '@/lib/cms-api';
+import { getLayout, getServiceBySlug } from '@/lib/cms-api';
+import { serviceJsonLd } from '@/lib/json-ld';
 import { resolveLocalizedSlug } from '@/lib/localized-slug';
 import { buildPageMetadata } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/urls';
 import { assetUrl } from '@/lib/urls';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 
@@ -39,13 +42,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const layout = await getLayout(locale);
+  const seoDefault = layout.seoDefault?.meta;
   if (slug === 'tu-van-dau-tu' || slug === 'investment-advisory') {
     const serviceSlug = advisoryServiceSlug(locale);
     const item = await getServiceBySlug(locale, serviceSlug);
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/${slug}`,
-      seo: item?.seo,
+      seo: item?.seo || seoDefault,
+      kind: 'service',
       fallback: {
         title: item?.title || (locale === 'vi' ? 'Tư vấn đầu tư chứng khoán' : 'Investment advisory'),
         description:
@@ -60,6 +66,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/${slug}`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Ngân hàng đầu tư' : 'Investment banking',
         description:
@@ -73,6 +81,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/${locale === 'vi' ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-von.html`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Thị trường vốn' : 'Equity capital markets',
         description:
@@ -86,6 +96,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/${locale === 'vi' ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-no.html`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Thị trường nợ' : 'Debt capital markets',
         description:
@@ -99,6 +111,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/giao-dich-truc-tuyen`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Giao dịch trực tuyến' : 'Online trading',
         description:
@@ -113,7 +127,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/${slug}`,
-      seo: service?.seo,
+      seo: service?.seo || seoDefault,
+      kind: 'service',
       fallback: {
         title: service?.title || (locale === 'vi' ? 'Tư vấn đầu tư chứng khoán' : 'Investment advisory'),
         description:
@@ -128,6 +143,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/dich-vu-tai-chinh`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Dịch vụ tài chính' : 'Financial services',
         description:
@@ -141,6 +158,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/san-xin-ha`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'San Xin Ha' : 'San Xin Ha',
         description:
@@ -153,7 +172,9 @@ export async function generateMetadata({
   if (slug === 'moi-gioi-chung-khoan') {
     return buildPageMetadata({
       locale,
-      pathname: `/${locale}/san-pham-dich-vu/moi-gioi-chung-khoan`,
+      pathname: `/${locale}/services/moi-gioi-chung-khoan`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Môi giới chứng khoán' : 'Securities brokerage',
         description:
@@ -167,6 +188,8 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale,
       pathname: `/${locale}/services/moi-gioi-chung-khoan/he-thong-giao-dich.html`,
+      seo: seoDefault,
+      kind: 'service',
       fallback: {
         title: locale === 'vi' ? 'Hệ thống giao dịch' : 'Trading system',
         description:
@@ -183,7 +206,8 @@ export async function generateMetadata({
   return buildPageMetadata({
     locale,
     pathname: `/${locale}/services/${canonicalSlug}`,
-    seo: item?.seo,
+    seo: item?.seo || seoDefault,
+    kind: 'service',
     fallback: {
       title: item?.title,
       description: item?.summary
@@ -199,34 +223,34 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
 
   if (slug === 'ngan-hang-dau-tu' || slug === 'investment-banking') {
-    return <InvestmentBankingLandingPage locale={locale} />;
+    return <InvestmentBankingLandingPage locale={locale} schemaUrl={`/${locale}/services/${slug}`} />;
   }
   if (slug === 'thi-truong-von') {
-    return <EquityMarketPage locale={locale} />;
+    return <EquityMarketPage locale={locale} schemaUrl={`/${locale}/services/${locale === 'vi' ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-von.html`} />;
   }
   if (slug === 'thi-truong-no') {
-    return <DebtMarketPage locale={locale} />;
+    return <DebtMarketPage locale={locale} schemaUrl={`/${locale}/services/${locale === 'vi' ? 'ngan-hang-dau-tu' : 'investment-banking'}/thi-truong-no.html`} />;
   }
 
   if (slug === 'giao-dich-truc-tuyen') {
-    return <BrokerageTradingPage locale={locale} />;
+    return <BrokerageTradingPage locale={locale} schemaUrl={`/${locale}/services/giao-dich-truc-tuyen`} />;
   }
   if (slug === 'tu-van-dau-tu' || slug === 'investment-advisory') {
     const service = await getServiceBySlug(locale, advisoryServiceSlug(locale));
-    return <BrokerageAdvisoryPage locale={locale} service={service} />;
+    return <BrokerageAdvisoryPage locale={locale} service={service} schemaUrl={`/${locale}/services/${slug}`} />;
   }
   if (slug === 'dich-vu-tai-chinh') {
-    return <BrokerageFinancialPage locale={locale} />;
+    return <BrokerageFinancialPage locale={locale} schemaUrl={`/${locale}/services/dich-vu-tai-chinh`} />;
   }
   if (slug === 'san-xin-ha') {
-    return <SanXinHaPage locale={locale} />;
+    return <SanXinHaPage locale={locale} schemaUrl={`/${locale}/services/san-xin-ha`} />;
   }
   if (slug === 'he-thong-giao-dich') {
-    return <BrokerageTradingPage locale={locale} />;
+    return <BrokerageTradingPage locale={locale} schemaUrl={`/${locale}/services/moi-gioi-chung-khoan/he-thong-giao-dich.html`} />;
   }
 
   if (slug === 'moi-gioi-chung-khoan') {
-    return <BrokerageLandingPage locale={locale} />;
+    return <BrokerageLandingPage locale={locale} schemaUrl={`/${locale}/services/moi-gioi-chung-khoan`} />;
   }
 
   const resolved = await resolveLocalizedSlug({ locale, slug, getBySlug: getServiceBySlug });
@@ -242,6 +266,17 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <JsonLd
+        data={
+          serviceJsonLd({
+            name: item.title,
+            description: item.summary,
+            url: absoluteUrl(`/${locale}/services/${canonicalSlug}`),
+            providerName: 'Shinhan Securities Vietnam',
+            imageUrl: assetUrl(item.coverImage?.data?.attributes?.url) || serviceFallbackImage(canonicalSlug)
+          })
+        }
+      />
       <PageHero
         title={item.title}
         subtitle={item.summary}

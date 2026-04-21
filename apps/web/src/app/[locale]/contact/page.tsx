@@ -60,7 +60,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           { label: vi ? 'Liên hệ' : 'Contact', href: `/${locale}/contact` }
         ]}
         kicker={vi ? 'Kết nối với chúng tôi' : 'Contact us'}
-        title={contact?.title || (vi ? 'Liên hệ Chứng khoán Shinhan' : 'Contact Shinhan Securities')}
+        title={contact?.title || (vi ? 'Liên hệ Shinhan Securities Vietnam' : 'Contact Shinhan Securities Vietnam')}
         subtitle={contact?.summary}
         highlights={
           vi

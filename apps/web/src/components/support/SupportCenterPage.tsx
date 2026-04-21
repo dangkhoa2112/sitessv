@@ -47,7 +47,7 @@ export function SupportCenterPage({ locale, page }: SupportCenterPageProps) {
 
       <div className="subpage-shell">
         <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
-          {page?.sections?.length ? <SectionRenderer sections={page.sections} /> : null}
+          {page?.sections?.length ? <SectionRenderer sections={page.sections} locale={locale as 'vi' | 'en'} /> : null}
         </div>
       </div>
     </>

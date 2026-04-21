@@ -65,7 +65,7 @@ export default async function LegalDetailPage({
       />
       <div className="subpage-shell">
         <div className="subpage-content subpage-content--narrow">
-          <SectionRenderer sections={page.sections} />
+          <SectionRenderer sections={page.sections} locale={locale as 'vi' | 'en'} />
         </div>
       </div>
     </>

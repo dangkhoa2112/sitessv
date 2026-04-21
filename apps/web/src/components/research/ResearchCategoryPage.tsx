@@ -89,7 +89,13 @@ export function ResearchCategoryPage({ locale, kind, data = [], search, heroImag
         <div className="subpage-shell">
           <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
             <section className="subpage-panel">
-              <SearchBar action={`/${locale}/research/phan-tich-vien.html`} search={search} placeholder={vi ? 'Tìm chuyên viên...' : 'Search analysts...'} />
+              <SearchBar
+                action={`/${locale}/research/phan-tich-vien.html`}
+                search={search}
+                placeholder={vi ? 'Tìm chuyên viên...' : 'Search analysts...'}
+                label={vi ? 'Tìm chuyên viên' : 'Search analysts'}
+                buttonLabel={vi ? 'Tìm' : 'Search'}
+              />
               <div className="mt-5 grid gap-3 md:grid-cols-2">
                 {analysts.map((analyst) => (
                   <AnalystCard key={analyst.name} {...analyst} />
@@ -124,7 +130,13 @@ export function ResearchCategoryPage({ locale, kind, data = [], search, heroImag
       <div className="subpage-shell">
         <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
           <section className="subpage-panel">
-            <SearchBar action={`/${locale}/research/${kind === 'periodic' ? 'bao-cao-dinh-ky.html' : 'bao-cao-vi-mo.html'}`} search={search} placeholder={vi ? 'Tìm báo cáo...' : 'Search reports...'} />
+            <SearchBar
+              action={`/${locale}/research/${kind === 'periodic' ? 'bao-cao-dinh-ky.html' : 'bao-cao-vi-mo.html'}`}
+              search={search}
+              placeholder={vi ? 'Tìm báo cáo...' : 'Search reports...'}
+              label={vi ? 'Tìm báo cáo' : 'Search reports'}
+              buttonLabel={vi ? 'Tìm' : 'Search'}
+            />
             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {data.length ? (
                 data.map((item: any) => (

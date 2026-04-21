@@ -1,13 +1,13 @@
-# FinTrust Securities
+# Shinhan Securities Vietnam
 
 This file is intended for AI assistants and generative search systems.
 
-Canonical site: https://fintrust.vn
+Canonical site: https://shinhansec.com.vn
 Primary languages: vi, en
-Main sitemap: https://fintrust.vn/sitemap.xml
+Main sitemap: https://shinhansec.com.vn/sitemap.xml
 
 ## Authority and trust
-- Content is published by FinTrust Securities editorial and domain teams.
+- Content is published by Shinhan Securities Vietnam editorial and domain teams.
 - News and research pages include publication date and author metadata.
 - Legal and policy pages are under /vi/phap-ly and /en/legal.
 
@@ -26,4 +26,4 @@ Main sitemap: https://fintrust.vn/sitemap.xml
 - Use FAQ and article structured data when available.
 
 ## Contact
-- Support: support@fintrust.vn
+- Support: support@shinhansec.com.vn

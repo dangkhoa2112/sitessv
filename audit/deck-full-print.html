@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shinhan Securities Vietnam — Audit & Transformation Deck</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 12mm 14mm;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      background: #fff;
+      font-size: 11pt;
+      line-height: 1.35;
+    }
+    /* One slide = one printed page (Chrome headless respects breaks + min-height) */
+    .slide {
+      display: block;
+      min-height: 186mm;
+      padding: 0 2mm 6mm 2mm;
+      border-bottom: 1px solid #e2e8f0;
+      page-break-after: always;
+      page-break-inside: avoid;
+      break-after: page;
+      break-inside: avoid;
+    }
+    .slide:last-of-type {
+      page-break-after: auto;
+      break-after: auto;
+      border-bottom: none;
+    }
+    .meta {
+      font-size: 9pt;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+    h2 {
+      font-size: 11pt;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+      color: #334155;
+    }
+    .takeaway {
+      background: #f1f5f9;
+      border-left: 4px solid #2563eb;
+      padding: 8px 12px;
+      margin: 10px 0 12px 0;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+    ul {
+      margin: 6px 0 0 0;
+      padding-left: 18px;
+    }
+    li { margin-bottom: 5px; }
+    .evidence {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 9pt;
+      color: #475569;
+    }
+    .label { color: #64748b; font-weight: 600; }
+    table.score {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-top: 8px;
+    }
+    table.score th, table.score td {
+      border: 1px solid #e2e8f0;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    table.score th { background: #f8fafc; }
+    @media print {
+      .slide {
+        border-bottom: none;
+        min-height: 186mm;
+        page-break-after: always;
+        break-after: page;
+      }
+      .slide:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<section class="slide" id="s1">
+  <p class="meta">Slide 1 · Evidence date: 2026-04-21 · shinhansec.com.vn vs. repo fintech-corporate-platform</p>
+  <h1>Shinhan Securities Vietnam — Website modernization &amp; SEO/GEO readiness</h1>
+  <p><span class="label">Objective:</span> Đặt khung dự án: tại sao đổi, đổi sang đâu, kết quả kinh doanh kỳ vọng.</p>
+  <div class="takeaway">Key takeaway: Đầu tư vào khả năng mở rộng và giảm rủi ro — không chỉ “làm lại giao diện”.</div>
+  <ul>
+    <li>Chuyển từ stack marketing <strong>PHP 7.4 + template</strong> sang <strong>Next.js + headless CMS</strong> (đã có trong repo).</li>
+    <li>Mục tiêu: tăng tốc đổi nội dung, cải thiện SEO/GEO, giảm nợ kỹ thuật và bảo mật.</li>
+    <li>Phạm vi: site công khai; ranh giới với hệ thống giao dịch giữ nguyên theo policy.</li>
+    <li>Thành công đo bằng GSC, CWV, funnel, velocity release.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> Header live <code>X-Powered-By: PHP/7.4.24</code> (curl); repo <code>apps/web</code> Next 16 (<code>package.json</code>).</div>
+</section>
+
+<!-- Slide 2 -->
+<section class="slide" id="s2">
+  <p class="meta">Slide 2</p>
+  <h1>Executive summary</h1>
+  <p><span class="label">Objective:</span> Bức tranh 30 giây + quyết định go / no-go.</p>
+  <div class="takeaway">Key takeaway: Live mang nợ SEO &amp; nền tảng; codebase mới đủ mạnh nhưng cần đầu tư vận hành + migration để tạo lợi ích.</div>
+  <ul>
+    <li><strong>Live:</strong> Mismatch metadata (canonical vs og:url), sitemap lastmod 2021, session PHP trên marketing, cache no-store.</li>
+    <li><strong>Repo:</strong> App Router + Strapi + SEO module (metadata, sitemap, JSON-LD, llms.txt).</li>
+    <li><strong>Gap:</strong> Thiếu test/CI trong repo; hardening env/CORS/CDN (technical requirements).</li>
+    <li><strong>Đề xuất:</strong> Roadmap theo phase: inventory → hardening → content → cutover.</li>
+    <li><strong>KPI:</strong> Coverage index, CWV p75, funnel CTA, MTTR.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> HTML canonical …/vi.html vs og:url /; sitemap index lastmod 2021; <code>audit/findings-detailed.md</code>.</div>
+</section>
+
+<!-- Slide 3 -->
+<section class="slide" id="s3">
+  <p class="meta">Slide 3</p>
+  <h1>Why now</h1>
+  <p><span class="label">Objective:</span> Biện minh timing — rủi ro tích lũy &amp; cơ hội thị trường.</p>
+  <div class="takeaway">Key takeaway: Trì hoãn = tăng chi phí (bảo mật, SEO, velocity) và giảm lợi thế nội dung / AI search.</div>
+  <ul>
+    <li><strong>PHP 7.4</strong> hết vòng đời — rủi ro tuân thủ &amp; incident.</li>
+    <li><strong>SEO:</strong> Sitemap &amp; freshness không phản ánh vận hành (lastmod 2021).</li>
+    <li><strong>Marketing:</strong> Cần tốc độ publish; template cũ khó scale.</li>
+    <li><strong>GEO:</strong> Nền tảng AI ưu tiên nội dung cấu trúc + llms.txt.</li>
+    <li><strong>Kỹ thuật:</strong> Monorepo chuẩn — cửa sổ cutover có kiểm soát.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> HTTP PHP 7.4; sitemap index; repo <code>public/llms.txt</code>.</div>
+</section>
+
+<!-- Slide 4 -->
+<section class="slide" id="s4">
+  <p class="meta">Slide 4</p>
+  <h1>Current website snapshot (live)</h1>
+  <p><span class="label">Objective:</span> Fact base về stack &amp; hành vi.</p>
+  <div class="takeaway">Key takeaway: Live là ứng dụng PHP truyền thống phục vụ marketing — không tối ưu cache &amp; SEO hiện đại.</div>
+  <ul>
+    <li><strong>Server:</strong> Apache; PHP 7.4; cookie session (<code>ci_session</code>) trên page.</li>
+    <li><strong>Root:</strong> HTTP 303 redirect sang <code>/vi</code>.</li>
+    <li><strong>Front-end:</strong> jQuery + Bootstrap + CSS template (<code>main.css?v=…</code>).</li>
+    <li><strong>Analytics:</strong> GTM trong HTML.</li>
+    <li><strong>Robots:</strong> Crawl được; disallow một số path hệ thống.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>curl -sI</code>, sample HTML <code>&lt;head&gt;</code>; <code>robots.txt</code>.</div>
+</section>
+
+<!-- Slide 5 -->
+<section class="slide" id="s5">
+  <p class="meta">Slide 5</p>
+  <h1>Top pain points — current website</h1>
+  <p><span class="label">Objective:</span> Vấn đề có hậu quả đo được.</p>
+  <div class="takeaway">Key takeaway: SEO không nhất quán + nền tảng không cache-friendly + EOL runtime.</div>
+  <ul>
+    <li><strong>Metadata:</strong> canonical (vi.html) vs URL /vi vs og:url root.</li>
+    <li><strong>Sitemap:</strong> lastmod 2021 trên index — mất tín hiệu freshness.</li>
+    <li><strong>hreflang / JSON-LD:</strong> Không thấy trong sample — thiếu tín hiệu quốc tế &amp; rich results.</li>
+    <li><strong>A11y:</strong> <code>user-scalable=no</code> — rủi ro WCAG.</li>
+    <li><strong>Cache:</strong> <code>Cache-Control: no-store</code> — chi phí &amp; latency.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> HTML canonical/og; sitemap XML; viewport; cache headers.</div>
+</section>
+
+<!-- Slide 6 -->
+<section class="slide" id="s6">
+  <p class="meta">Slide 6</p>
+  <h1>UX/UI findings (live)</h1>
+  <p><span class="label">Objective:</span> Độ “enterprise fintech maturity”.</p>
+  <div class="takeaway">Key takeaway: UI chấp nhận được nhưng design system &amp; accessibility chưa đạt chuẩn hiện đại.</div>
+  <ul>
+    <li><strong>Layout:</strong> Bootstrap + custom CSS — khó rhythm/spacing đồng nhất.</li>
+    <li><strong>Typography:</strong> Không có design token thống nhất (vs Tailwind trong repo).</li>
+    <li><strong>CTA hierarchy:</strong> Phụ thuộc legacy; cần QA trang con.</li>
+    <li><strong>Accessibility:</strong> Khóa zoom; cần audit WCAG sau cutover.</li>
+    <li><strong>Responsive:</strong> QA thiết bị thật.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> Viewport meta; <code>/templates/css/</code>.</div>
+</section>
+
+<!-- Slide 7 -->
+<section class="slide" id="s7">
+  <p class="meta">Slide 7</p>
+  <h1>SEO findings (live)</h1>
+  <p><span class="label">Objective:</span> Gap cụ thể cho growth.</p>
+  <div class="takeaway">Key takeaway: SEO kỹ thuật mâu thuẫn (canonical/social) và lỗi thời (sitemap).</div>
+  <ul>
+    <li>Canonical &amp; social mismatch — duplicate &amp; attribution sai.</li>
+    <li>Hreflang không có trong sample — rủi ro VI/EN trên SERP.</li>
+    <li>Structured data: không thấy JSON-LD trong sample.</li>
+    <li>Sitemap index lastmod 2021.</li>
+    <li>Robots cơ bản; internal search cần policy (repo có <code>robots.ts</code>).</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> HTML; sitemap; <code>apps/web/src/lib/seo.ts</code>, <code>sitemap.ts</code>.</div>
+</section>
+
+<!-- Slide 8 -->
+<section class="slide" id="s8">
+  <p class="meta">Slide 8</p>
+  <h1>GEO / AI-search findings</h1>
+  <p><span class="label">Objective:</span> Retrieval &amp; LLM discovery.</p>
+  <div class="takeaway">Key takeaway: llms.txt &amp; chunking không có trên live; repo đã chuẩn bị.</div>
+  <ul>
+    <li>Live: <code>https://shinhansec.com.vn/llms.txt</code> → <strong>404</strong>; repo có file — cần deploy.</li>
+    <li>Entity consistency: mismatch URL làm AI khó chọn canonical.</li>
+    <li>Content hubs ổn định: news/research/services (định nghĩa trong repo <code>llms.txt</code>).</li>
+    <li>Internal search: noindex — repo có logic khi có query.</li>
+    <li>Trust: author/date từ Strapi là nguồn đúng.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>curl -sI …/llms.txt</code>; <code>apps/web/public/llms.txt</code>; <code>buildListingPageMetadata</code>.</div>
+</section>
+
+<!-- Slide 9 -->
+<section class="slide" id="s9">
+  <p class="meta">Slide 9</p>
+  <h1>Performance &amp; maintainability (live)</h1>
+  <p><span class="label">Objective:</span> Kết nối kỹ thuật với chi phí.</p>
+  <div class="takeaway">Key takeaway: Thiết kế chống cache + JS legacy — khó đạt CWV mục tiêu.</div>
+  <ul>
+    <li><code>Cache-Control: no-store</code> — HTML khó cache tại edge.</li>
+    <li>jQuery + nhiều CSS — payload &amp; main-thread.</li>
+    <li>Session cookie — phức tạp CDN cache.</li>
+    <li>Template PHP — khó maintain; không có DS rõ trong code cũ.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> Headers; scripts; <code>docs/technical-requirements.md</code> §3 CWV.</div>
+</section>
+
+<!-- Slide 10 -->
+<section class="slide" id="s10">
+  <p class="meta">Slide 10</p>
+  <h1>Current source architecture snapshot (repo)</h1>
+  <p><span class="label">Objective:</span> Chứng minh “đã có nền tảng”.</p>
+  <div class="takeaway">Key takeaway: Monorepo đúng hướng — web tách CMS, SEO programmatic, i18n route-based.</div>
+  <ul>
+    <li><strong>apps/web:</strong> Next.js 16, App Router, Tailwind 4, next-intl.</li>
+    <li><strong>apps/cms:</strong> Strapi 4, GraphQL, sections/components.</li>
+    <li><strong>Data:</strong> Apollo SSR; ISR <code>REVALIDATE_TIME</code> (mặc định 120s).</li>
+    <li><strong>SEO:</strong> <code>robots.ts</code>, <code>sitemap.ts</code>, <code>json-ld.ts</code>, <code>seo:audit</code>.</li>
+    <li><strong>URL Việt:</strong> redirects/rewrites trong <code>next.config.ts</code>.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>package.json</code>, <code>docs/architecture.md</code>, <code>next.config.ts</code>.</div>
+</section>
+
+<!-- Slide 11 -->
+<section class="slide" id="s11">
+  <p class="meta">Slide 11</p>
+  <h1>Strengths of current source</h1>
+  <p><span class="label">Objective:</span> Công nhận phần đúng.</p>
+  <div class="takeaway">Key takeaway: ~80% kiến trúc hiện đại cho corporate fintech.</div>
+  <ul>
+    <li>Programmatic SEO (metadata, alternates, OG/Twitter).</li>
+    <li>Sitemap động theo entity CMS.</li>
+    <li>JSON-LD đủ loại.</li>
+    <li>Section renderer — modular, tốt cho AI chunking.</li>
+    <li>Security headers baseline trên Next.</li>
+    <li>Rich text sanitize (<code>sanitize-html</code>) — hướng OWASP.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>seo.ts</code>, <code>sitemap.ts</code>, <code>json-ld.ts</code>, <code>SectionRenderer.tsx</code>.</div>
+</section>
+
+<!-- Slide 12 -->
+<section class="slide" id="s12">
+  <p class="meta">Slide 12</p>
+  <h1>Weaknesses / gaps (repo)</h1>
+  <p><span class="label">Objective:</span> Công việc còn lại — thành thật.</p>
+  <div class="takeaway">Key takeaway: Codebase mạnh nhưng chưa phải vận hành hoàn chỉnh (test, CI, webhook).</div>
+  <ul>
+    <li>Không có automated test (e2e/unit) trong monorepo.</li>
+    <li>Không thấy GitHub Actions — pipeline mở.</li>
+    <li>On-demand revalidation chưa mặc định — độ trễ &amp; tải GraphQL.</li>
+    <li>CORS/env/CDN production (P0 TR).</li>
+    <li>Contact pipeline có thể chưa nối kênh thật (TR §5.2).</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> Grep repo; <code>docs/technical-requirements.md</code> P0/P1.</div>
+</section>
+
+<!-- Slide 13 -->
+<section class="slide" id="s13">
+  <p class="meta">Slide 13</p>
+  <h1>Comparison matrix — live vs repo vs target ops</h1>
+  <p><span class="label">Objective:</span> Một slide quyết định.</p>
+  <div class="takeaway">Key takeaway: Live = technical debt có chi phí SEO/vận hành; Repo = nền tảng; Target = ops + migration.</div>
+  <ul>
+    <li><strong>Runtime:</strong> PHP 7.4 vs Node/Next — bảo mật &amp; talent.</li>
+    <li><strong>SEO:</strong> sitemap 2021 vs dynamic lastmod.</li>
+    <li><strong>Metadata:</strong> conflict vs <code>buildPageMetadata</code>.</li>
+    <li><strong>Cache:</strong> no-store vs edge-friendly.</li>
+    <li><strong>Content:</strong> template vs Strapi sections.</li>
+    <li><strong>GEO:</strong> llms.txt 404 vs file trong repo.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>audit/comparison-matrix.md</code>.</div>
+</section>
+
+<!-- Slide 14 -->
+<section class="slide" id="s14">
+  <p class="meta">Slide 14</p>
+  <h1>Strategic rationale — Next + Strapi</h1>
+  <p><span class="label">Objective:</span> Kết nối kiến trúc với chiến lược công ty.</p>
+  <div class="takeaway">Key takeaway: Giảm time-to-market nội dung/sản phẩm &amp; tăng kiểm soát rủi ro.</div>
+  <ul>
+    <li>Tách content khỏi release code — marketing không chờ dev mọi thay đổi.</li>
+    <li>SEO/GEO programmatic — scale URL không lỗi thủ công.</li>
+    <li>Stateless web — cache tốt hơn, chi phí hợp lý.</li>
+    <li>Bảo mật: giảm PHP legacy surface; harden theo TR.</li>
+    <li>Analytics: GTM giữ được; CSP/consent có kiểm soát.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>docs/architecture.md</code>, TR §2–4.</div>
+</section>
+
+<!-- Slide 15 -->
+<section class="slide" id="s15">
+  <p class="meta">Slide 15</p>
+  <h1>Proposed target structure (logical)</h1>
+  <p><span class="label">Objective:</span> Hình dung triển khai.</p>
+  <div class="takeaway">Key takeaway: CDN → Next → Strapi → MySQL; marketing tách biệt trading.</div>
+  <ul>
+    <li>Edge: TLS, nén, cache static.</li>
+    <li>Next: SSR/ISR, headers, image optimization.</li>
+    <li>Strapi: editorial, media, webhooks (mục tiêu).</li>
+    <li>DB: MySQL + backup RPO/RTO (TR §7).</li>
+    <li>Môi trường: dev/staging/prod tách secrets.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>audit/target-architecture.md</code>.</div>
+</section>
+
+<!-- Slide 16 -->
+<section class="slide" id="s16">
+  <p class="meta">Slide 16</p>
+  <h1>Proposed SEO/GEO architecture</h1>
+  <p><span class="label">Objective:</span> Hành động cụ thể cho marketing &amp; eng.</p>
+  <div class="takeaway">Key takeaway: Một pipeline metadata + sitemap động + llms.txt + schema = nền tảng growth bền.</div>
+  <ul>
+    <li>Canonical + hreflang từ <code>seo.ts</code> — QA checklist template.</li>
+    <li>Sitemap từ CMS <code>updatedAt</code>.</li>
+    <li>Robots: chặn API &amp; search query phù hợp.</li>
+    <li>JSON-LD theo loại trang — Rich Results.</li>
+    <li><code>llms.txt</code> + hub pages — GEO.</li>
+    <li>CI: <code>pnpm seo:audit</code> gate.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>seo.ts</code>, <code>sitemap.ts</code>, <code>robots.ts</code>, <code>llms.txt</code>.</div>
+</section>
+
+<!-- Slide 17 -->
+<section class="slide" id="s17">
+  <p class="meta">Slide 17</p>
+  <h1>Proposed UX/UI system direction</h1>
+  <p><span class="label">Objective:</span> Nhất quán thương hiệu fintech.</p>
+  <div class="takeaway">Key takeaway: Tailwind + section components — chuẩn hóa enterprise.</div>
+  <ul>
+    <li>Token hóa spacing, màu, type scale (Tailwind).</li>
+    <li>Card/section patterns trong SectionRenderer.</li>
+    <li>A11y: bỏ khóa zoom; focus; heading hierarchy từ CMS.</li>
+    <li>Responsive: ưu tiên mobile (CWV).</li>
+    <li>Content design: H2/H3 rõ cho SEO &amp; AI retrieval.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>SectionRenderer.tsx</code>; viewport issue trên live.</div>
+</section>
+
+<!-- Slide 18 -->
+<section class="slide" id="s18">
+  <p class="meta">Slide 18</p>
+  <h1>Migration phases</h1>
+  <p><span class="label">Objective:</span> Lộ trình kiểm soát — không big-bang mù.</p>
+  <div class="takeaway">Key takeaway: inventory → hardening → content → cutover.</div>
+  <ul>
+    <li><strong>Phase 0:</strong> URL inventory + redirect map + baseline perf/SEO.</li>
+    <li><strong>Phase 1:</strong> env/CORS/CDN/contact (P0 TR).</li>
+    <li><strong>Phase 2:</strong> migrate content Strapi + QA parity.</li>
+    <li><strong>Phase 3:</strong> SEO/GEO prep (GSC, schema, llms.txt live).</li>
+    <li><strong>Phase 4:</strong> traffic switch + hypercare 7 ngày.</li>
+    <li><strong>Phase 5:</strong> webhook revalidate, APM, tối ưu liên tục.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>audit/phase-roadmap.md</code>.</div>
+</section>
+
+<!-- Slide 19 -->
+<section class="slide" id="s19">
+  <p class="meta">Slide 19</p>
+  <h1>Risks &amp; mitigation</h1>
+  <p><span class="label">Objective:</span> Chủ động câu hỏi steering committee.</p>
+  <div class="takeaway">Key takeaway: Rủi ro lớn — mất URL equity &amp; regression; đều có mitigation.</div>
+  <ul>
+    <li>SEO traffic drop: 301 đầy đủ, GSC monitoring, rollback DNS.</li>
+    <li>Content mismatch: QA staging, sign-off song song.</li>
+    <li>Performance regression: Lighthouse CI, CDN.</li>
+    <li>Security misconfig: CORS, secrets, Strapi admin (TR).</li>
+    <li>Team capacity: scope theo phase.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> TR §4–7; <code>next.config.ts</code> redirects.</div>
+</section>
+
+<!-- Slide 20 -->
+<section class="slide" id="s20">
+  <p class="meta">Slide 20</p>
+  <h1>KPI / expected outcomes</h1>
+  <p><span class="label">Objective:</span> Định nghĩa thắng thế.</p>
+  <div class="takeaway">Key takeaway: Thắng = ổn định SEO + CWV + velocity nội dung — không chỉ “site mới”.</div>
+  <ul>
+    <li><strong>GSC:</strong> indexed pages; hreflang issues → 0 critical.</li>
+    <li><strong>CWV:</strong> LCP/INP/CLS p75 good (TR).</li>
+    <li><strong>Funnel:</strong> CTR CTA mở TK / completion (GA4).</li>
+    <li><strong>Engineering:</strong> deploy định kỳ; MTTR &lt; ngưỡng.</li>
+    <li><strong>Risk:</strong> giảm vuln deps; loại PHP legacy khỏi public.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>audit/kpi-metrics.md</code>.</div>
+</section>
+
+<!-- Slide 21 -->
+<section class="slide" id="s21">
+  <p class="meta">Slide 21</p>
+  <h1>Final recommendation</h1>
+  <p><span class="label">Objective:</span> Clear ask.</p>
+  <div class="takeaway">Key takeaway: Phê duyệt chương trình; cấp budget migration + ops; chỉ định owner SEO/Product/Tech.</div>
+  <ul>
+    <li>Approve roadmap phase 0–4 + runbook cutover.</li>
+    <li>Invest CI/testing + production env (P0 TR).</li>
+    <li>Assign SEO owner (hreflang/canonical QA); Product owner (funnel).</li>
+    <li>Communicate: nâng cấp nền tảng — không chỉ skin.</li>
+    <li>Measure KPI 30/60/90 ngày sau go-live.</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> <code>audit/findings-detailed.md</code>, <code>audit/comparison-matrix.md</code>.</div>
+</section>
+
+<!-- Appendix: consolidated scorecard & file index -->
+<section class="slide" id="s22">
+  <p class="meta">Phụ lục — Tổng hợp (cùng bộ audit)</p>
+  <h1>Điểm số 5 layer &amp; tài liệu trong repo audit/</h1>
+  <p><span class="label">Objective:</span> Một trang tham chiếu nhanh sau 21 slide.</p>
+  <div class="takeaway">Key takeaway: Live yếu L4/L5; source mạnh L3/L4 — cần hardening vận hành trước cutover.</div>
+  <table class="score">
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Live (/10)</th>
+        <th>Source (/10)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>L1 Business &amp; journey</td><td>5</td><td>7</td></tr>
+      <tr><td>L2 UX/UI</td><td>4</td><td>7</td></tr>
+      <tr><td>L3 SEO / GEO</td><td>4</td><td>8</td></tr>
+      <tr><td>L4 Frontend architecture</td><td>3</td><td>8</td></tr>
+      <tr><td>L5 Platform readiness</td><td>4</td><td>7</td></tr>
+    </tbody>
+  </table>
+  <ul style="margin-top:10px;">
+    <li><code>audit/findings-detailed.md</code> — findings đầy đủ</li>
+    <li><code>audit/comparison-matrix.md</code> — ma trận</li>
+    <li><code>audit/target-architecture.md</code>, <code>phase-roadmap.md</code>, <code>kpi-metrics.md</code></li>
+    <li><code>audit/deck-outline-technical.md</code> — góc kỹ thuật</li>
+  </ul>
+  <div class="evidence"><span class="label">Evidence:</span> Cùng ngày audit 2026-04-21; chi tiết layer trong <code>findings-detailed.md</code>.</div>
+</section>
+
+</body>
+</html>

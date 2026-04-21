@@ -4,12 +4,16 @@ export function Pagination({
   page,
   pageCount,
   basePath,
-  query
+  query,
+  previousLabel = 'Prev',
+  nextLabel = 'Next'
 }: {
   page: number;
   pageCount: number;
   basePath: string;
   query?: string;
+  previousLabel?: string;
+  nextLabel?: string;
 }) {
   if (pageCount <= 1) return null;
 
@@ -22,21 +26,27 @@ export function Pagination({
 
   return (
     <nav className="mt-6 flex items-center justify-center gap-2.5" aria-label="Pagination">
-      <Link
-        href={page > 1 ? buildHref(page - 1) : '#'}
-        className={`rounded-xl border px-3 py-1.5 text-sm ${page > 1 ? 'border-[#bfd7e9] bg-white/85 text-slate-700 hover:bg-[#eef5fb]' : 'pointer-events-none border-slate-200 text-slate-300'}`}
-      >
-        Prev
-      </Link>
+      {page > 1 ? (
+        <Link href={buildHref(page - 1)} className="rounded-xl border border-[#bfd7e9] bg-white/85 px-3 py-1.5 text-sm text-slate-700 hover:bg-[#eef5fb]">
+          {previousLabel}
+        </Link>
+      ) : (
+        <span aria-disabled="true" className="rounded-xl border border-slate-200 px-3 py-1.5 text-sm text-slate-300">
+          {previousLabel}
+        </span>
+      )}
       <span className="rounded-xl border border-white/65 bg-white/85 px-3 py-1.5 text-sm font-medium text-slate-700">
         {page} / {pageCount}
       </span>
-      <Link
-        href={page < pageCount ? buildHref(page + 1) : '#'}
-        className={`rounded-xl border px-3 py-1.5 text-sm ${page < pageCount ? 'border-[#bfd7e9] bg-white/85 text-slate-700 hover:bg-[#eef5fb]' : 'pointer-events-none border-slate-200 text-slate-300'}`}
-      >
-        Next
-      </Link>
+      {page < pageCount ? (
+        <Link href={buildHref(page + 1)} className="rounded-xl border border-[#bfd7e9] bg-white/85 px-3 py-1.5 text-sm text-slate-700 hover:bg-[#eef5fb]">
+          {nextLabel}
+        </Link>
+      ) : (
+        <span aria-disabled="true" className="rounded-xl border border-slate-200 px-3 py-1.5 text-sm text-slate-300">
+          {nextLabel}
+        </span>
+      )}
     </nav>
   );
 }

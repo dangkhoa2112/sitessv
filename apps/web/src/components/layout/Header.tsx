@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { buildLocalePath, switchLocalePath } from '@/lib/localized-routes';
+import { SITE_NAME } from '@/lib/constants';
 import { SHINHAN_VISUALS } from '@/lib/shinhan-visuals';
 import { SHINHAN_BRAND_LINKS } from '@/lib/shinhan-links';
 
@@ -110,7 +111,7 @@ export function Header({ locale, items = [], primaryButton }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 shadow-[0_1px_0_0_rgba(20,35,104,0.18)]">
       <div className="hidden bg-[var(--color-primary)] text-white lg:block">
-          <div className="shinhan-container flex h-10 items-center justify-end gap-4 text-[13px]">
+        <div className="shinhan-container flex h-10 items-center justify-end gap-4 text-[13px]">
           <a href={SHINHAN_BRAND_LINKS.contact.hotlineTel} className="font-medium hover:opacity-90">
             Hotline: <strong className="ml-2 text-[15px]">{SHINHAN_BRAND_LINKS.contact.hotlineLabel}</strong>
           </a>
@@ -130,7 +131,7 @@ export function Header({ locale, items = [], primaryButton }: HeaderProps) {
       <div className="bg-white">
         <div className="shinhan-container flex h-[4.9rem] items-center justify-between">
           <Link href={`/${locale}`} className="flex shrink-0 items-center">
-            <Image src={SHINHAN_VISUALS.brand.logo} alt="Shinhan Securities" width={276} height={46} className="h-8 w-auto md:h-10" priority />
+            <Image src={SHINHAN_VISUALS.brand.logo} alt={SITE_NAME} width={276} height={46} className="h-8 w-auto md:h-10" priority />
           </Link>
 
           <nav className="hidden items-center gap-7 xl:flex" aria-label="Primary navigation">
@@ -143,7 +144,7 @@ export function Header({ locale, items = [], primaryButton }: HeaderProps) {
                   {item.label}
                 </HeaderLink>
                 {item.children?.length ? (
-                  <div className="invisible absolute left-1/2 top-[calc(100%+16px)] z-30 min-w-72 -translate-x-1/2 rounded-none border border-[#e4e4e4] bg-white py-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute left-1/2 top-[calc(100%+16px)] z-30 min-w-72 -translate-x-1/2 rounded-none border border-[#e4e4e4] bg-white py-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                     {item.children.map((child) => (
                       <HeaderLink
                         key={child.href}

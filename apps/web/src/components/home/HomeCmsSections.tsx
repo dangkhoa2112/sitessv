@@ -4,11 +4,13 @@ import { Button } from '@/components/ui/button';
 import { ContentCard } from '@/components/ui/ContentCard';
 import { CtaSection } from '@/components/ui/cta';
 import { FaqAccordion } from '@/components/ui/FaqAccordion';
+import { JsonLd } from '@/components/ui/JsonLd';
 import { InsightRail } from '@/components/ui/InsightRail';
 import { Card, CardBody, CardDescription } from '@/components/ui/card';
 import { HomeLegacyMarketStrip } from '@/components/home/HomeLegacyMarketStrip';
 import { HomeLegacyPriceBoardSection } from '@/components/home/HomeLegacyPriceBoardSection';
 import { OneShinhanShowcase } from '@/components/home/OneShinhanShowcase';
+import { faqJsonLd } from '@/lib/json-ld';
 import { buildLocalePath, switchLocalePath } from '@/lib/localized-routes';
 import { assetUrl } from '@/lib/urls';
 
@@ -471,6 +473,7 @@ export function HomeCmsSections({
 
             return (
               <section key={`${section.__typename}-${index}`} className="shinhan-container home-section-gap">
+                <JsonLd data={faqJsonLd(items.map((item) => ({ question: item.question, answer: item.answer })))} />
                 <FaqAccordion items={items} />
               </section>
             );

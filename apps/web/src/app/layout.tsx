@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { SkipLink } from '@/components/layout/SkipLink';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
 const shinhan = localFont({
   variable: '--font-sans',
@@ -25,8 +25,8 @@ const oneShinhan = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Shinhan Securities Vietnam',
-    template: '%s | Shinhan Securities Vietnam'
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`
   },
   description: 'Shinhan Securities Vietnam corporate website.',
   robots: 'index,follow'
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning className={`${shinhan.variable} ${oneShinhan.variable}`}>
+    <html lang="vi" suppressHydrationWarning className={`${shinhan.variable} ${oneShinhan.variable}`}>
       <body suppressHydrationWarning className="min-h-screen text-[var(--color-text)] antialiased">
         <SkipLink />
         {children}

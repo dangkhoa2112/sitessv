@@ -32,8 +32,8 @@ export async function generateMetadata({
     description:
       cmsPage?.summary ||
       (locale === 'vi'
-        ? 'Cập nhật tin tức thị trường chứng khoán, doanh nghiệp và hoạt động của FinTrust.'
-        : 'Latest updates on securities markets, corporate actions, and FinTrust activities.')
+        ? 'Cập nhật tin tức thị trường chứng khoán, doanh nghiệp và hoạt động của Shinhan Securities Vietnam.'
+        : 'Latest updates on securities markets, corporate actions, and Shinhan Securities Vietnam activities.')
   });
 }
 
@@ -48,32 +48,39 @@ export default async function NewsPage({
   const { page, q } = await searchParams;
   const currentPage = Number(page || 1);
   const cmsPage = await getPageBySlug(locale, 'news');
+  const title = cmsPage?.title || (locale === 'vi' ? 'Tin tức thị trường' : 'Market News');
+  const subtitle =
+    cmsPage?.summary ||
+    (locale === 'vi'
+      ? 'Cập nhật tin tức thị trường chứng khoán, doanh nghiệp và hoạt động của Shinhan Securities Vietnam.'
+      : 'Latest updates on securities markets, corporate actions, and Shinhan Securities Vietnam activities.');
 
   const data = await listNews({ locale, page: currentPage, pageSize: 9, search: q || '' });
 
   return (
     <>
+      <PageHero
+        title={title}
+        subtitle={subtitle}
+        highlights={locale === 'vi' ? ['Thông báo', 'Ưu đãi', 'Diễn biến thị trường'] : ['Announcements', 'Promotions', 'Market pulse']}
+        imageUrl={assetUrl(cmsPage?.coverImage?.data?.attributes?.url) || SHINHAN_VISUALS.services.research.hero}
+      />
       {cmsPage?.sections?.length ? (
         <div className="subpage-shell subpage-shell--compact">
           <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
-            <SectionRenderer sections={cmsPage.sections} />
+            <SectionRenderer sections={cmsPage.sections} locale={locale as 'vi' | 'en'} />
           </div>
         </div>
-      ) : (
-        <PageHero
-          title={locale === 'vi' ? 'Tin tức' : 'News'}
-          subtitle={
-            locale === 'vi'
-              ? 'Cập nhật tin tức thị trường, thông báo vận hành và hoạt động doanh nghiệp theo dòng thời gian.'
-              : 'Market news, operational notices, and corporate updates organized as a living feed.'
-          }
-          highlights={locale === 'vi' ? ['Thông báo', 'Ưu đãi', 'Diễn biến thị trường'] : ['Announcements', 'Promotions', 'Market pulse']}
-          imageUrl={assetUrl(cmsPage?.coverImage?.data?.attributes?.url) || SHINHAN_VISUALS.services.research.hero}
-        />
-      )}
+      ) : null}
       <div className="subpage-shell">
         <div className="subpage-content subpage-content--wide">
-          <SearchBar action={`/${locale}/news`} search={q} placeholder={locale === 'vi' ? 'Tìm tin tức...' : 'Search news...'} />
+          <SearchBar
+            action={`/${locale}/news`}
+            search={q}
+            placeholder={locale === 'vi' ? 'Tìm tin tức...' : 'Search news...'}
+            label={locale === 'vi' ? 'Tìm tin tức' : 'Search news'}
+            buttonLabel={locale === 'vi' ? 'Tìm' : 'Search'}
+          />
           {data.items.length === 0 ? (
             <EmptyState
               title={locale === 'vi' ? 'Không có bản tin phù hợp' : 'No matching articles'}
@@ -95,7 +102,14 @@ export default async function NewsPage({
               ))}
             </div>
           )}
-          <Pagination page={currentPage} pageCount={data.pagination?.pageCount || 1} basePath={`/${locale}/news`} query={q || ''} />
+          <Pagination
+            page={currentPage}
+            pageCount={data.pagination?.pageCount || 1}
+            basePath={`/${locale}/news`}
+            query={q || ''}
+            previousLabel={locale === 'vi' ? 'Trước' : 'Prev'}
+            nextLabel={locale === 'vi' ? 'Sau' : 'Next'}
+          />
         </div>
       </div>
     </>

@@ -50,30 +50,37 @@ export default async function ServicesPage({
   const currentPage = Number(page || 1);
   const data = await listServices({ locale, page: currentPage, pageSize: 9, search: q || '' });
   const cmsPage = await getPageBySlug(locale, 'services');
+  const title = cmsPage?.title || (locale === 'vi' ? 'Sản phẩm & Dịch vụ' : 'Products & Services');
+  const subtitle =
+    cmsPage?.summary ||
+    (locale === 'vi'
+      ? 'Danh mục giải pháp dành cho nhà đầu tư cá nhân, doanh nghiệp và định chế.'
+      : 'Investment products and service offerings for retail, corporate, and institutional clients.');
 
   return (
     <>
+      <PageHero
+        title={title}
+        subtitle={subtitle}
+        highlights={locale === 'vi' ? ['Môi giới chứng khoán', 'Ngân hàng đầu tư', 'Nền tảng giao dịch số'] : ['Brokerage service', 'Investment banking', 'Digital trading platforms']}
+        imageUrl={assetUrl(cmsPage?.coverImage?.data?.attributes?.url) || SHINHAN_VISUALS.services.brokerage.hero}
+      />
       {cmsPage?.sections?.length ? (
         <div className="subpage-shell subpage-shell--compact">
           <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
-            <SectionRenderer sections={cmsPage.sections} />
+            <SectionRenderer sections={cmsPage.sections} locale={locale as 'vi' | 'en'} />
           </div>
         </div>
-      ) : (
-        <PageHero
-          title={locale === 'vi' ? 'Sản phẩm & Dịch vụ' : 'Products & Services'}
-          subtitle={
-            locale === 'vi'
-              ? 'Danh mục giải pháp dành cho nhà đầu tư cá nhân, doanh nghiệp và định chế.'
-              : 'Service portfolio for retail, corporate and institutional investors.'
-          }
-          highlights={locale === 'vi' ? ['Môi giới chứng khoán', 'Ngân hàng đầu tư', 'Nền tảng giao dịch số'] : ['Brokerage service', 'Investment banking', 'Digital trading platforms']}
-          imageUrl={assetUrl(cmsPage?.coverImage?.data?.attributes?.url) || SHINHAN_VISUALS.services.brokerage.hero}
-        />
-      )}
+      ) : null}
       <div className="subpage-shell">
         <div className="subpage-content subpage-content--wide space-y-6 md:space-y-8">
-          <SearchBar action={`/${locale}/services`} search={q} placeholder={locale === 'vi' ? 'Tìm dịch vụ...' : 'Search services...'} />
+          <SearchBar
+            action={`/${locale}/services`}
+            search={q}
+            placeholder={locale === 'vi' ? 'Tìm dịch vụ...' : 'Search services...'}
+            label={locale === 'vi' ? 'Tìm dịch vụ' : 'Search services'}
+            buttonLabel={locale === 'vi' ? 'Tìm' : 'Search'}
+          />
           {data.items.length === 0 ? (
             <EmptyState
               title={locale === 'vi' ? 'Không có dịch vụ phù hợp' : 'No matching service'}
@@ -101,6 +108,8 @@ export default async function ServicesPage({
             pageCount={data.pagination?.pageCount || 1}
             basePath={`/${locale}/services`}
             query={q || ''}
+            previousLabel={locale === 'vi' ? 'Trước' : 'Prev'}
+            nextLabel={locale === 'vi' ? 'Sau' : 'Next'}
           />
         </div>
       </div>
